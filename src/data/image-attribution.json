@@ -1,0 +1,1458 @@
+[
+  {
+    "slug": "machine-chest-press",
+    "exerciseName": "Machine Chest Press",
+    "upstreamName": "Leverage Chest Press",
+    "upstreamId": "Leverage_Chest_Press",
+    "upstreamImages": [
+      "Leverage_Chest_Press/0.jpg",
+      "Leverage_Chest_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Chest_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "plate-loaded-chest-press",
+    "exerciseName": "Plate-Loaded Chest Press",
+    "upstreamName": "Leverage Chest Press",
+    "upstreamId": "Leverage_Chest_Press",
+    "upstreamImages": [
+      "Leverage_Chest_Press/0.jpg",
+      "Leverage_Chest_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Chest_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-bench-press",
+    "exerciseName": "Smith Bench Press",
+    "upstreamName": "Dumbbell Bench Press",
+    "upstreamId": "Dumbbell_Bench_Press",
+    "upstreamImages": [
+      "Dumbbell_Bench_Press/0.jpg",
+      "Dumbbell_Bench_Press/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Bench_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "barbell-bench-press",
+    "exerciseName": "Barbell Bench Press",
+    "upstreamName": "Dumbbell Bench Press",
+    "upstreamId": "Dumbbell_Bench_Press",
+    "upstreamImages": [
+      "Dumbbell_Bench_Press/0.jpg",
+      "Dumbbell_Bench_Press/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Bench_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dumbbell-bench-press",
+    "exerciseName": "Dumbbell Bench Press",
+    "upstreamName": "Dumbbell Bench Press",
+    "upstreamId": "Dumbbell_Bench_Press",
+    "upstreamImages": [
+      "Dumbbell_Bench_Press/0.jpg",
+      "Dumbbell_Bench_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Bench_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "incline-chest-press-machine",
+    "exerciseName": "Incline Chest Press Machine",
+    "upstreamName": "Leverage Incline Chest Press",
+    "upstreamId": "Leverage_Incline_Chest_Press",
+    "upstreamImages": [
+      "Leverage_Incline_Chest_Press/0.jpg",
+      "Leverage_Incline_Chest_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Incline_Chest_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-incline-press",
+    "exerciseName": "Smith Incline Press",
+    "upstreamName": "Incline Dumbbell Press",
+    "upstreamId": "Incline_Dumbbell_Press",
+    "upstreamImages": [
+      "Incline_Dumbbell_Press/0.jpg",
+      "Incline_Dumbbell_Press/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Dumbbell_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "incline-dumbbell-press",
+    "exerciseName": "Incline Dumbbell Press",
+    "upstreamName": "Incline Dumbbell Press",
+    "upstreamId": "Incline_Dumbbell_Press",
+    "upstreamImages": [
+      "Incline_Dumbbell_Press/0.jpg",
+      "Incline_Dumbbell_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Dumbbell_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "pec-deck",
+    "exerciseName": "Pec Deck",
+    "upstreamName": "Butterfly",
+    "upstreamId": "Butterfly",
+    "upstreamImages": [
+      "Butterfly/0.jpg",
+      "Butterfly/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Butterfly",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-fly",
+    "exerciseName": "Cable Fly",
+    "upstreamName": "Incline Cable Flye",
+    "upstreamId": "Incline_Cable_Flye",
+    "upstreamImages": [
+      "Incline_Cable_Flye/0.jpg",
+      "Incline_Cable_Flye/1.jpg"
+    ],
+    "matchScore": 2.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Cable_Flye",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "low-to-high-cable-fly",
+    "exerciseName": "Low-to-High Cable Fly",
+    "upstreamName": "Incline Cable Flye",
+    "upstreamId": "Incline_Cable_Flye",
+    "upstreamImages": [
+      "Incline_Cable_Flye/0.jpg",
+      "Incline_Cable_Flye/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Cable_Flye",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "high-to-low-cable-fly",
+    "exerciseName": "High-to-Low Cable Fly",
+    "upstreamName": "Decline Smith Press",
+    "upstreamId": "Decline_Smith_Press",
+    "upstreamImages": [
+      "Decline_Smith_Press/0.jpg",
+      "Decline_Smith_Press/1.jpg"
+    ],
+    "matchScore": 1.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Decline_Smith_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "push-up",
+    "exerciseName": "Push-Up",
+    "upstreamName": "Clock Push-Up",
+    "upstreamId": "Clock_Push-Up",
+    "upstreamImages": [
+      "Clock_Push-Up/0.jpg",
+      "Clock_Push-Up/1.jpg"
+    ],
+    "matchScore": 2.667,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Clock_Push-Up",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "assisted-dip",
+    "exerciseName": "Assisted Dip",
+    "upstreamName": "Bench Dips",
+    "upstreamId": "Bench_Dips",
+    "upstreamImages": [
+      "Bench_Dips/0.jpg",
+      "Bench_Dips/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Bench_Dips",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "chest-biased-dip",
+    "exerciseName": "Chest-Biased Dip",
+    "upstreamName": "Dips - Chest Version",
+    "upstreamId": "Dips_-_Chest_Version",
+    "upstreamImages": [
+      "Dips_-_Chest_Version/0.jpg",
+      "Dips_-_Chest_Version/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dips_-_Chest_Version",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-chest-press",
+    "exerciseName": "Cable Chest Press",
+    "upstreamName": "Cable Chest Press",
+    "upstreamId": "Cable_Chest_Press",
+    "upstreamImages": [
+      "Cable_Chest_Press/0.jpg",
+      "Cable_Chest_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Chest_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "overhand-lat-pulldown",
+    "exerciseName": "Overhand Lat Pulldown",
+    "upstreamName": "Wide-Grip Lat Pulldown",
+    "upstreamId": "Wide-Grip_Lat_Pulldown",
+    "upstreamImages": [
+      "Wide-Grip_Lat_Pulldown/0.jpg",
+      "Wide-Grip_Lat_Pulldown/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Wide-Grip_Lat_Pulldown",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "neutral-grip-lat-pulldown",
+    "exerciseName": "Neutral-Grip Lat Pulldown",
+    "upstreamName": "Close-Grip Front Lat Pulldown",
+    "upstreamId": "Close-Grip_Front_Lat_Pulldown",
+    "upstreamImages": [
+      "Close-Grip_Front_Lat_Pulldown/0.jpg",
+      "Close-Grip_Front_Lat_Pulldown/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Close-Grip_Front_Lat_Pulldown",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "underhand-lat-pulldown",
+    "exerciseName": "Underhand Lat Pulldown",
+    "upstreamName": "Underhand Cable Pulldowns",
+    "upstreamId": "Underhand_Cable_Pulldowns",
+    "upstreamImages": [
+      "Underhand_Cable_Pulldowns/0.jpg",
+      "Underhand_Cable_Pulldowns/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Underhand_Cable_Pulldowns",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "single-arm-cable-pulldown",
+    "exerciseName": "Single-Arm Cable Pulldown",
+    "upstreamName": "One Arm Lat Pulldown",
+    "upstreamId": "One_Arm_Lat_Pulldown",
+    "upstreamImages": [
+      "One_Arm_Lat_Pulldown/0.jpg",
+      "One_Arm_Lat_Pulldown/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/One_Arm_Lat_Pulldown",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "assisted-pull-up",
+    "exerciseName": "Assisted Pull-Up",
+    "upstreamName": "Chin-Up",
+    "upstreamId": "Chin-Up",
+    "upstreamImages": [
+      "Chin-Up/0.jpg",
+      "Chin-Up/1.jpg"
+    ],
+    "matchScore": 2,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Chin-Up",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "pull-up",
+    "exerciseName": "Pull-Up",
+    "upstreamName": "Scapular Pull-Up",
+    "upstreamId": "Scapular_Pull-Up",
+    "upstreamImages": [
+      "Scapular_Pull-Up/0.jpg",
+      "Scapular_Pull-Up/1.jpg"
+    ],
+    "matchScore": 2.667,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Scapular_Pull-Up",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "chin-up",
+    "exerciseName": "Chin-Up",
+    "upstreamName": "Chin-Up",
+    "upstreamId": "Chin-Up",
+    "upstreamImages": [
+      "Chin-Up/0.jpg",
+      "Chin-Up/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Chin-Up",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "seated-cable-row",
+    "exerciseName": "Seated Cable Row",
+    "upstreamName": "Seated Cable Rows",
+    "upstreamId": "Seated_Cable_Rows",
+    "upstreamImages": [
+      "Seated_Cable_Rows/0.jpg",
+      "Seated_Cable_Rows/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Cable_Rows",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "chest-supported-row-machine",
+    "exerciseName": "Chest-Supported Row Machine",
+    "upstreamName": "Leverage High Row",
+    "upstreamId": "Leverage_High_Row",
+    "upstreamImages": [
+      "Leverage_High_Row/0.jpg",
+      "Leverage_High_Row/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_High_Row",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "iso-lateral-plate-loaded-row",
+    "exerciseName": "Iso-Lateral Plate-Loaded Row",
+    "upstreamName": "Leverage High Row",
+    "upstreamId": "Leverage_High_Row",
+    "upstreamImages": [
+      "Leverage_High_Row/0.jpg",
+      "Leverage_High_Row/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_High_Row",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "high-row-machine",
+    "exerciseName": "High Row Machine",
+    "upstreamName": "Leverage High Row",
+    "upstreamId": "Leverage_High_Row",
+    "upstreamImages": [
+      "Leverage_High_Row/0.jpg",
+      "Leverage_High_Row/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_High_Row",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "t-bar-row",
+    "exerciseName": "T-Bar Row",
+    "upstreamName": "T-Bar Row with Handle",
+    "upstreamId": "T-Bar_Row_with_Handle",
+    "upstreamImages": [
+      "T-Bar_Row_with_Handle/0.jpg",
+      "T-Bar_Row_with_Handle/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/T-Bar_Row_with_Handle",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dumbbell-one-arm-row",
+    "exerciseName": "Dumbbell One-Arm Row",
+    "upstreamName": "One-Arm Dumbbell Row",
+    "upstreamId": "One-Arm_Dumbbell_Row",
+    "upstreamImages": [
+      "One-Arm_Dumbbell_Row/0.jpg",
+      "One-Arm_Dumbbell_Row/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/One-Arm_Dumbbell_Row",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "barbell-row",
+    "exerciseName": "Barbell Row",
+    "upstreamName": "Bodyweight Mid Row",
+    "upstreamId": "Bodyweight_Mid_Row",
+    "upstreamImages": [
+      "Bodyweight_Mid_Row/0.jpg",
+      "Bodyweight_Mid_Row/1.jpg"
+    ],
+    "matchScore": 2.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Bodyweight_Mid_Row",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "straight-arm-cable-pulldown",
+    "exerciseName": "Straight-Arm Cable Pulldown",
+    "upstreamName": "Straight-Arm Pulldown",
+    "upstreamId": "Straight-Arm_Pulldown",
+    "upstreamImages": [
+      "Straight-Arm_Pulldown/0.jpg",
+      "Straight-Arm_Pulldown/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Straight-Arm_Pulldown",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "face-pull",
+    "exerciseName": "Face Pull",
+    "upstreamName": "Face Pull",
+    "upstreamId": "Face_Pull",
+    "upstreamImages": [
+      "Face_Pull/0.jpg",
+      "Face_Pull/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Face_Pull",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "machine-shoulder-press",
+    "exerciseName": "Machine Shoulder Press",
+    "upstreamName": "Leverage Shoulder Press",
+    "upstreamId": "Leverage_Shoulder_Press",
+    "upstreamImages": [
+      "Leverage_Shoulder_Press/0.jpg",
+      "Leverage_Shoulder_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Shoulder_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "plate-loaded-shoulder-press",
+    "exerciseName": "Plate-Loaded Shoulder Press",
+    "upstreamName": "Leverage Shoulder Press",
+    "upstreamId": "Leverage_Shoulder_Press",
+    "upstreamImages": [
+      "Leverage_Shoulder_Press/0.jpg",
+      "Leverage_Shoulder_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Shoulder_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-overhead-press",
+    "exerciseName": "Smith Overhead Press",
+    "upstreamName": "Overhead Cable Curl",
+    "upstreamId": "Overhead_Cable_Curl",
+    "upstreamImages": [
+      "Overhead_Cable_Curl/0.jpg",
+      "Overhead_Cable_Curl/1.jpg"
+    ],
+    "matchScore": 2.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Overhead_Cable_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dumbbell-shoulder-press",
+    "exerciseName": "Dumbbell Shoulder Press",
+    "upstreamName": "Dumbbell Shoulder Press",
+    "upstreamId": "Dumbbell_Shoulder_Press",
+    "upstreamImages": [
+      "Dumbbell_Shoulder_Press/0.jpg",
+      "Dumbbell_Shoulder_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Shoulder_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "arnold-press",
+    "exerciseName": "Arnold Press",
+    "upstreamName": "Arnold Dumbbell Press",
+    "upstreamId": "Arnold_Dumbbell_Press",
+    "upstreamImages": [
+      "Arnold_Dumbbell_Press/0.jpg",
+      "Arnold_Dumbbell_Press/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Arnold_Dumbbell_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "lateral-raise-machine",
+    "exerciseName": "Lateral Raise Machine",
+    "upstreamName": "Side Lateral Raise",
+    "upstreamId": "Side_Lateral_Raise",
+    "upstreamImages": [
+      "Side_Lateral_Raise/0.jpg",
+      "Side_Lateral_Raise/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Side_Lateral_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-lateral-raise",
+    "exerciseName": "Cable Lateral Raise",
+    "upstreamName": "Cable Seated Lateral Raise",
+    "upstreamId": "Cable_Seated_Lateral_Raise",
+    "upstreamImages": [
+      "Cable_Seated_Lateral_Raise/0.jpg",
+      "Cable_Seated_Lateral_Raise/1.jpg"
+    ],
+    "matchScore": 2.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Seated_Lateral_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dumbbell-lateral-raise",
+    "exerciseName": "Dumbbell Lateral Raise",
+    "upstreamName": "Cable Seated Lateral Raise",
+    "upstreamId": "Cable_Seated_Lateral_Raise",
+    "upstreamImages": [
+      "Cable_Seated_Lateral_Raise/0.jpg",
+      "Cable_Seated_Lateral_Raise/1.jpg"
+    ],
+    "matchScore": 2.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Seated_Lateral_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "reverse-pec-deck",
+    "exerciseName": "Reverse Pec Deck",
+    "upstreamName": "Reverse Machine Flyes",
+    "upstreamId": "Reverse_Machine_Flyes",
+    "upstreamImages": [
+      "Reverse_Machine_Flyes/0.jpg",
+      "Reverse_Machine_Flyes/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Machine_Flyes",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-rear-delt-fly",
+    "exerciseName": "Cable Rear-Delt Fly",
+    "upstreamName": "Cable Rear Delt Fly",
+    "upstreamId": "Cable_Rear_Delt_Fly",
+    "upstreamImages": [
+      "Cable_Rear_Delt_Fly/0.jpg",
+      "Cable_Rear_Delt_Fly/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Rear_Delt_Fly",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "45-degree-leg-press",
+    "exerciseName": "45-Degree Leg Press",
+    "upstreamName": "Leg Press",
+    "upstreamId": "Leg_Press",
+    "upstreamImages": [
+      "Leg_Press/0.jpg",
+      "Leg_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leg_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "horizontal-leg-press",
+    "exerciseName": "Horizontal Leg Press",
+    "upstreamName": "Leg Press",
+    "upstreamId": "Leg_Press",
+    "upstreamImages": [
+      "Leg_Press/0.jpg",
+      "Leg_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leg_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "hack-squat",
+    "exerciseName": "Hack Squat",
+    "upstreamName": "Hack Squat",
+    "upstreamId": "Hack_Squat",
+    "upstreamImages": [
+      "Hack_Squat/0.jpg",
+      "Hack_Squat/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Hack_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "pendulum-squat",
+    "exerciseName": "Pendulum Squat",
+    "upstreamName": "Hack Squat",
+    "upstreamId": "Hack_Squat",
+    "upstreamImages": [
+      "Hack_Squat/0.jpg",
+      "Hack_Squat/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Hack_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-squat",
+    "exerciseName": "Smith Squat",
+    "upstreamName": "Smith Machine Squat",
+    "upstreamId": "Smith_Machine_Squat",
+    "upstreamImages": [
+      "Smith_Machine_Squat/0.jpg",
+      "Smith_Machine_Squat/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Smith_Machine_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "barbell-back-squat",
+    "exerciseName": "Barbell Back Squat",
+    "upstreamName": "Barbell Squat",
+    "upstreamId": "Barbell_Squat",
+    "upstreamImages": [
+      "Barbell_Squat/0.jpg",
+      "Barbell_Squat/1.jpg"
+    ],
+    "matchScore": 1.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "front-squat",
+    "exerciseName": "Front Squat",
+    "upstreamName": "Front Barbell Squat",
+    "upstreamId": "Front_Barbell_Squat",
+    "upstreamImages": [
+      "Front_Barbell_Squat/0.jpg",
+      "Front_Barbell_Squat/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Front_Barbell_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "goblet-squat",
+    "exerciseName": "Goblet Squat",
+    "upstreamName": "Goblet Squat",
+    "upstreamId": "Goblet_Squat",
+    "upstreamImages": [
+      "Goblet_Squat/0.jpg",
+      "Goblet_Squat/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Goblet_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "bulgarian-split-squat",
+    "exerciseName": "Bulgarian Split Squat",
+    "upstreamName": "Barbell Side Split Squat",
+    "upstreamId": "Barbell_Side_Split_Squat",
+    "upstreamImages": [
+      "Barbell_Side_Split_Squat/0.jpg",
+      "Barbell_Side_Split_Squat/1.jpg"
+    ],
+    "matchScore": 1.833,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Side_Split_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-split-squat",
+    "exerciseName": "Smith Split Squat",
+    "upstreamName": "Smith Machine Squat",
+    "upstreamId": "Smith_Machine_Squat",
+    "upstreamImages": [
+      "Smith_Machine_Squat/0.jpg",
+      "Smith_Machine_Squat/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Smith_Machine_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "single-leg-press",
+    "exerciseName": "Single-Leg Press",
+    "upstreamName": "Single-Leg Leg Extension",
+    "upstreamId": "Single-Leg_Leg_Extension",
+    "upstreamImages": [
+      "Single-Leg_Leg_Extension/0.jpg",
+      "Single-Leg_Leg_Extension/1.jpg"
+    ],
+    "matchScore": 2.667,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Single-Leg_Leg_Extension",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "walking-lunge",
+    "exerciseName": "Walking Lunge",
+    "upstreamName": "Barbell Walking Lunge",
+    "upstreamId": "Barbell_Walking_Lunge",
+    "upstreamImages": [
+      "Barbell_Walking_Lunge/0.jpg",
+      "Barbell_Walking_Lunge/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Walking_Lunge",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "reverse-lunge",
+    "exerciseName": "Reverse Lunge",
+    "upstreamName": "Crossover Reverse Lunge",
+    "upstreamId": "Crossover_Reverse_Lunge",
+    "upstreamImages": [
+      "Crossover_Reverse_Lunge/0.jpg",
+      "Crossover_Reverse_Lunge/1.jpg"
+    ],
+    "matchScore": 2.667,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Crossover_Reverse_Lunge",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "step-up",
+    "exerciseName": "Step-Up",
+    "upstreamName": "Step-up with Knee Raise",
+    "upstreamId": "Step-up_with_Knee_Raise",
+    "upstreamImages": [
+      "Step-up_with_Knee_Raise/0.jpg",
+      "Step-up_with_Knee_Raise/1.jpg"
+    ],
+    "matchScore": 2.667,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Step-up_with_Knee_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "leg-extension",
+    "exerciseName": "Leg Extension",
+    "upstreamName": "Leg Extensions",
+    "upstreamId": "Leg_Extensions",
+    "upstreamImages": [
+      "Leg_Extensions/0.jpg",
+      "Leg_Extensions/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leg_Extensions",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "single-leg-extension",
+    "exerciseName": "Single-Leg Extension",
+    "upstreamName": "Leg Extensions",
+    "upstreamId": "Leg_Extensions",
+    "upstreamImages": [
+      "Leg_Extensions/0.jpg",
+      "Leg_Extensions/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leg_Extensions",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "romanian-deadlift",
+    "exerciseName": "Romanian Deadlift",
+    "upstreamName": "Romanian Deadlift",
+    "upstreamId": "Romanian_Deadlift",
+    "upstreamImages": [
+      "Romanian_Deadlift/0.jpg",
+      "Romanian_Deadlift/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Romanian_Deadlift",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-romanian-deadlift",
+    "exerciseName": "Smith Romanian Deadlift",
+    "upstreamName": "Romanian Deadlift",
+    "upstreamId": "Romanian_Deadlift",
+    "upstreamImages": [
+      "Romanian_Deadlift/0.jpg",
+      "Romanian_Deadlift/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Romanian_Deadlift",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dumbbell-romanian-deadlift",
+    "exerciseName": "Dumbbell Romanian Deadlift",
+    "upstreamName": "Smith Machine Stiff-Legged Deadlift",
+    "upstreamId": "Smith_Machine_Stiff-Legged_Deadlift",
+    "upstreamImages": [
+      "Smith_Machine_Stiff-Legged_Deadlift/0.jpg",
+      "Smith_Machine_Stiff-Legged_Deadlift/1.jpg"
+    ],
+    "matchScore": 1.833,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Smith_Machine_Stiff-Legged_Deadlift",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-pull-through",
+    "exerciseName": "Cable Pull-Through",
+    "upstreamName": "Pull Through",
+    "upstreamId": "Pull_Through",
+    "upstreamImages": [
+      "Pull_Through/0.jpg",
+      "Pull_Through/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Pull_Through",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "seated-leg-curl",
+    "exerciseName": "Seated Leg Curl",
+    "upstreamName": "Seated Leg Curl",
+    "upstreamId": "Seated_Leg_Curl",
+    "upstreamImages": [
+      "Seated_Leg_Curl/0.jpg",
+      "Seated_Leg_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Leg_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "lying-leg-curl",
+    "exerciseName": "Lying Leg Curl",
+    "upstreamName": "Lying Leg Curls",
+    "upstreamId": "Lying_Leg_Curls",
+    "upstreamImages": [
+      "Lying_Leg_Curls/0.jpg",
+      "Lying_Leg_Curls/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Lying_Leg_Curls",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "standing-single-leg-curl",
+    "exerciseName": "Standing Single-Leg Curl",
+    "upstreamName": "Standing Leg Curl",
+    "upstreamId": "Standing_Leg_Curl",
+    "upstreamImages": [
+      "Standing_Leg_Curl/0.jpg",
+      "Standing_Leg_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Standing_Leg_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "hip-thrust-machine",
+    "exerciseName": "Hip Thrust Machine",
+    "upstreamName": "Barbell Hip Thrust",
+    "upstreamId": "Barbell_Hip_Thrust",
+    "upstreamImages": [
+      "Barbell_Hip_Thrust/0.jpg",
+      "Barbell_Hip_Thrust/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Hip_Thrust",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-hip-thrust",
+    "exerciseName": "Smith Hip Thrust",
+    "upstreamName": "Barbell Hip Thrust",
+    "upstreamId": "Barbell_Hip_Thrust",
+    "upstreamImages": [
+      "Barbell_Hip_Thrust/0.jpg",
+      "Barbell_Hip_Thrust/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Hip_Thrust",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "barbell-hip-thrust",
+    "exerciseName": "Barbell Hip Thrust",
+    "upstreamName": "Barbell Hip Thrust",
+    "upstreamId": "Barbell_Hip_Thrust",
+    "upstreamImages": [
+      "Barbell_Hip_Thrust/0.jpg",
+      "Barbell_Hip_Thrust/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Hip_Thrust",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "glute-bridge",
+    "exerciseName": "Glute Bridge",
+    "upstreamName": "Butt Lift (Bridge)",
+    "upstreamId": "Butt_Lift_Bridge",
+    "upstreamImages": [
+      "Butt_Lift_Bridge/0.jpg",
+      "Butt_Lift_Bridge/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Butt_Lift_Bridge",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "45-degree-back-extension",
+    "exerciseName": "45-Degree Back Extension",
+    "upstreamName": "Hyperextensions (Back Extensions)",
+    "upstreamId": "Hyperextensions_Back_Extensions",
+    "upstreamImages": [
+      "Hyperextensions_Back_Extensions/0.jpg",
+      "Hyperextensions_Back_Extensions/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Hyperextensions_Back_Extensions",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "hip-abduction-machine",
+    "exerciseName": "Hip Abduction Machine",
+    "upstreamName": "Thigh Abductor",
+    "upstreamId": "Thigh_Abductor",
+    "upstreamImages": [
+      "Thigh_Abductor/0.jpg",
+      "Thigh_Abductor/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Thigh_Abductor",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-hip-abduction",
+    "exerciseName": "Cable Hip Abduction",
+    "upstreamName": "Smith Machine Hip Raise",
+    "upstreamId": "Smith_Machine_Hip_Raise",
+    "upstreamImages": [
+      "Smith_Machine_Hip_Raise/0.jpg",
+      "Smith_Machine_Hip_Raise/1.jpg"
+    ],
+    "matchScore": 1.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Smith_Machine_Hip_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-kickback",
+    "exerciseName": "Cable Kickback",
+    "upstreamName": "Kneeling Squat",
+    "upstreamId": "Kneeling_Squat",
+    "upstreamImages": [
+      "Kneeling_Squat/0.jpg",
+      "Kneeling_Squat/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Kneeling_Squat",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "standing-calf-raise-machine",
+    "exerciseName": "Standing Calf Raise Machine",
+    "upstreamName": "Standing Calf Raises",
+    "upstreamId": "Standing_Calf_Raises",
+    "upstreamImages": [
+      "Standing_Calf_Raises/0.jpg",
+      "Standing_Calf_Raises/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Standing_Calf_Raises",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "seated-calf-raise",
+    "exerciseName": "Seated Calf Raise",
+    "upstreamName": "Seated Calf Raise",
+    "upstreamId": "Seated_Calf_Raise",
+    "upstreamImages": [
+      "Seated_Calf_Raise/0.jpg",
+      "Seated_Calf_Raise/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Calf_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "leg-press-calf-press",
+    "exerciseName": "Leg Press Calf Press",
+    "upstreamName": "Calf Press On The Leg Press Machine",
+    "upstreamId": "Calf_Press_On_The_Leg_Press_Machine",
+    "upstreamImages": [
+      "Calf_Press_On_The_Leg_Press_Machine/0.jpg",
+      "Calf_Press_On_The_Leg_Press_Machine/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Calf_Press_On_The_Leg_Press_Machine",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "smith-standing-calf-raise",
+    "exerciseName": "Smith Standing Calf Raise",
+    "upstreamName": "Standing Calf Raises",
+    "upstreamId": "Standing_Calf_Raises",
+    "upstreamImages": [
+      "Standing_Calf_Raises/0.jpg",
+      "Standing_Calf_Raises/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Standing_Calf_Raises",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "single-leg-calf-raise",
+    "exerciseName": "Single-Leg Calf Raise",
+    "upstreamName": "Calf Press On The Leg Press Machine",
+    "upstreamId": "Calf_Press_On_The_Leg_Press_Machine",
+    "upstreamImages": [
+      "Calf_Press_On_The_Leg_Press_Machine/0.jpg",
+      "Calf_Press_On_The_Leg_Press_Machine/1.jpg"
+    ],
+    "matchScore": 1.833,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Calf_Press_On_The_Leg_Press_Machine",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-curl",
+    "exerciseName": "Cable Curl",
+    "upstreamName": "Cable Hammer Curls - Rope Attachment",
+    "upstreamId": "Cable_Hammer_Curls_-_Rope_Attachment",
+    "upstreamImages": [
+      "Cable_Hammer_Curls_-_Rope_Attachment/0.jpg",
+      "Cable_Hammer_Curls_-_Rope_Attachment/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Hammer_Curls_-_Rope_Attachment",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "preacher-curl-machine",
+    "exerciseName": "Preacher Curl Machine",
+    "upstreamName": "Preacher Curl",
+    "upstreamId": "Preacher_Curl",
+    "upstreamImages": [
+      "Preacher_Curl/0.jpg",
+      "Preacher_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Preacher_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "ez-bar-curl",
+    "exerciseName": "EZ-Bar Curl",
+    "upstreamName": "EZ-Bar Curl",
+    "upstreamId": "EZ-Bar_Curl",
+    "upstreamImages": [
+      "EZ-Bar_Curl/0.jpg",
+      "EZ-Bar_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/EZ-Bar_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "barbell-curl",
+    "exerciseName": "Barbell Curl",
+    "upstreamName": "Barbell Curl",
+    "upstreamId": "Barbell_Curl",
+    "upstreamImages": [
+      "Barbell_Curl/0.jpg",
+      "Barbell_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dumbbell-curl",
+    "exerciseName": "Dumbbell Curl",
+    "upstreamName": "Barbell Curl",
+    "upstreamId": "Barbell_Curl",
+    "upstreamImages": [
+      "Barbell_Curl/0.jpg",
+      "Barbell_Curl/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "incline-dumbbell-curl",
+    "exerciseName": "Incline Dumbbell Curl",
+    "upstreamName": "Incline Dumbbell Curl",
+    "upstreamId": "Incline_Dumbbell_Curl",
+    "upstreamImages": [
+      "Incline_Dumbbell_Curl/0.jpg",
+      "Incline_Dumbbell_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Dumbbell_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "bayesian-cable-curl",
+    "exerciseName": "Bayesian Cable Curl",
+    "upstreamName": "Lying High Bench Barbell Curl",
+    "upstreamId": "Lying_High_Bench_Barbell_Curl",
+    "upstreamImages": [
+      "Lying_High_Bench_Barbell_Curl/0.jpg",
+      "Lying_High_Bench_Barbell_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Lying_High_Bench_Barbell_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "hammer-curl",
+    "exerciseName": "Hammer Curl",
+    "upstreamName": "Hammer Curls",
+    "upstreamId": "Hammer_Curls",
+    "upstreamImages": [
+      "Hammer_Curls/0.jpg",
+      "Hammer_Curls/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Hammer_Curls",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "rope-hammer-curl",
+    "exerciseName": "Rope Hammer Curl",
+    "upstreamName": "Cable Hammer Curls - Rope Attachment",
+    "upstreamId": "Cable_Hammer_Curls_-_Rope_Attachment",
+    "upstreamImages": [
+      "Cable_Hammer_Curls_-_Rope_Attachment/0.jpg",
+      "Cable_Hammer_Curls_-_Rope_Attachment/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Hammer_Curls_-_Rope_Attachment",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "reverse-curl",
+    "exerciseName": "Reverse Curl",
+    "upstreamName": "Reverse Barbell Curl",
+    "upstreamId": "Reverse_Barbell_Curl",
+    "upstreamImages": [
+      "Reverse_Barbell_Curl/0.jpg",
+      "Reverse_Barbell_Curl/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Barbell_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "wrist-curl",
+    "exerciseName": "Wrist Curl",
+    "upstreamName": "Cable Wrist Curl",
+    "upstreamId": "Cable_Wrist_Curl",
+    "upstreamImages": [
+      "Cable_Wrist_Curl/0.jpg",
+      "Cable_Wrist_Curl/1.jpg"
+    ],
+    "matchScore": 3,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Wrist_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "wrist-extension",
+    "exerciseName": "Wrist Extension",
+    "upstreamName": "Reverse Barbell Curl",
+    "upstreamId": "Reverse_Barbell_Curl",
+    "upstreamImages": [
+      "Reverse_Barbell_Curl/0.jpg",
+      "Reverse_Barbell_Curl/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Barbell_Curl",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "rope-pressdown",
+    "exerciseName": "Rope Pressdown",
+    "upstreamName": "Triceps Pushdown - Rope Attachment",
+    "upstreamId": "Triceps_Pushdown_-_Rope_Attachment",
+    "upstreamImages": [
+      "Triceps_Pushdown_-_Rope_Attachment/0.jpg",
+      "Triceps_Pushdown_-_Rope_Attachment/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Triceps_Pushdown_-_Rope_Attachment",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "straight-bar-pressdown",
+    "exerciseName": "Straight-Bar Pressdown",
+    "upstreamName": "Triceps Pushdown",
+    "upstreamId": "Triceps_Pushdown",
+    "upstreamImages": [
+      "Triceps_Pushdown/0.jpg",
+      "Triceps_Pushdown/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Triceps_Pushdown",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "single-arm-pressdown",
+    "exerciseName": "Single-Arm Pressdown",
+    "upstreamName": "One Arm Pronated Dumbbell Triceps Extension",
+    "upstreamId": "One_Arm_Pronated_Dumbbell_Triceps_Extension",
+    "upstreamImages": [
+      "One_Arm_Pronated_Dumbbell_Triceps_Extension/0.jpg",
+      "One_Arm_Pronated_Dumbbell_Triceps_Extension/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/One_Arm_Pronated_Dumbbell_Triceps_Extension",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "rope-overhead-extension",
+    "exerciseName": "Rope Overhead Extension",
+    "upstreamName": "Cable Rope Overhead Triceps Extension",
+    "upstreamId": "Cable_Rope_Overhead_Triceps_Extension",
+    "upstreamImages": [
+      "Cable_Rope_Overhead_Triceps_Extension/0.jpg",
+      "Cable_Rope_Overhead_Triceps_Extension/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Rope_Overhead_Triceps_Extension",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "single-arm-cable-overhead-extension",
+    "exerciseName": "Single-Arm Cable Overhead Extension",
+    "upstreamName": "One Arm Supinated Dumbbell Triceps Extension",
+    "upstreamId": "One_Arm_Supinated_Dumbbell_Triceps_Extension",
+    "upstreamImages": [
+      "One_Arm_Supinated_Dumbbell_Triceps_Extension/0.jpg",
+      "One_Arm_Supinated_Dumbbell_Triceps_Extension/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/One_Arm_Supinated_Dumbbell_Triceps_Extension",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "seated-dip-machine",
+    "exerciseName": "Seated Dip Machine",
+    "upstreamName": "Bench Dips",
+    "upstreamId": "Bench_Dips",
+    "upstreamImages": [
+      "Bench_Dips/0.jpg",
+      "Bench_Dips/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Bench_Dips",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "close-grip-smith-press",
+    "exerciseName": "Close-Grip Smith Press",
+    "upstreamName": "Close-Grip Barbell Bench Press",
+    "upstreamId": "Close-Grip_Barbell_Bench_Press",
+    "upstreamImages": [
+      "Close-Grip_Barbell_Bench_Press/0.jpg",
+      "Close-Grip_Barbell_Bench_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Close-Grip_Barbell_Bench_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "ez-bar-skull-crusher",
+    "exerciseName": "EZ-Bar Skull Crusher",
+    "upstreamName": "EZ-Bar Skullcrusher",
+    "upstreamId": "EZ-Bar_Skullcrusher",
+    "upstreamImages": [
+      "EZ-Bar_Skullcrusher/0.jpg",
+      "EZ-Bar_Skullcrusher/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/EZ-Bar_Skullcrusher",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dumbbell-overhead-extension",
+    "exerciseName": "Dumbbell Overhead Extension",
+    "upstreamName": "Cable Rope Overhead Triceps Extension",
+    "upstreamId": "Cable_Rope_Overhead_Triceps_Extension",
+    "upstreamImages": [
+      "Cable_Rope_Overhead_Triceps_Extension/0.jpg",
+      "Cable_Rope_Overhead_Triceps_Extension/1.jpg"
+    ],
+    "matchScore": 2.5,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Rope_Overhead_Triceps_Extension",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-crunch",
+    "exerciseName": "Cable Crunch",
+    "upstreamName": "Cable Crunch",
+    "upstreamId": "Cable_Crunch",
+    "upstreamImages": [
+      "Cable_Crunch/0.jpg",
+      "Cable_Crunch/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Crunch",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "ab-crunch-machine",
+    "exerciseName": "Ab Crunch Machine",
+    "upstreamName": "Ab Crunch Machine",
+    "upstreamId": "Ab_Crunch_Machine",
+    "upstreamImages": [
+      "Ab_Crunch_Machine/0.jpg",
+      "Ab_Crunch_Machine/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Ab_Crunch_Machine",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "decline-weighted-crunch",
+    "exerciseName": "Decline Weighted Crunch",
+    "upstreamName": "Decline Crunch",
+    "upstreamId": "Decline_Crunch",
+    "upstreamImages": [
+      "Decline_Crunch/0.jpg",
+      "Decline_Crunch/1.jpg"
+    ],
+    "matchScore": 2,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Decline_Crunch",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "hanging-knee-raise",
+    "exerciseName": "Hanging Knee Raise",
+    "upstreamName": "Hanging Leg Raise",
+    "upstreamId": "Hanging_Leg_Raise",
+    "upstreamImages": [
+      "Hanging_Leg_Raise/0.jpg",
+      "Hanging_Leg_Raise/1.jpg"
+    ],
+    "matchScore": 1.333,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Hanging_Leg_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "hanging-leg-raise",
+    "exerciseName": "Hanging Leg Raise",
+    "upstreamName": "Hanging Leg Raise",
+    "upstreamId": "Hanging_Leg_Raise",
+    "upstreamImages": [
+      "Hanging_Leg_Raise/0.jpg",
+      "Hanging_Leg_Raise/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Hanging_Leg_Raise",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "captains-chair-knee-raise",
+    "exerciseName": "Captain's Chair Knee Raise",
+    "upstreamName": "Knee/Hip Raise On Parallel Bars",
+    "upstreamId": "Knee_Hip_Raise_On_Parallel_Bars",
+    "upstreamImages": [
+      "Knee_Hip_Raise_On_Parallel_Bars/0.jpg",
+      "Knee_Hip_Raise_On_Parallel_Bars/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Knee_Hip_Raise_On_Parallel_Bars",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "reverse-crunch",
+    "exerciseName": "Reverse Crunch",
+    "upstreamName": "Reverse Crunch",
+    "upstreamId": "Reverse_Crunch",
+    "upstreamImages": [
+      "Reverse_Crunch/0.jpg",
+      "Reverse_Crunch/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Crunch",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "ab-wheel-rollout",
+    "exerciseName": "Ab Wheel Rollout",
+    "upstreamName": "Barbell Ab Rollout",
+    "upstreamId": "Barbell_Ab_Rollout",
+    "upstreamImages": [
+      "Barbell_Ab_Rollout/0.jpg",
+      "Barbell_Ab_Rollout/1.jpg"
+    ],
+    "matchScore": 2,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Ab_Rollout",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "plank",
+    "exerciseName": "Plank",
+    "upstreamName": "Plank",
+    "upstreamId": "Plank",
+    "upstreamImages": [
+      "Plank/0.jpg",
+      "Plank/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Plank",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "side-plank",
+    "exerciseName": "Side Plank",
+    "upstreamName": "Push Up to Side Plank",
+    "upstreamId": "Push_Up_to_Side_Plank",
+    "upstreamImages": [
+      "Push_Up_to_Side_Plank/0.jpg",
+      "Push_Up_to_Side_Plank/1.jpg"
+    ],
+    "matchScore": 2.4,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Push_Up_to_Side_Plank",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "pallof-press",
+    "exerciseName": "Pallof Press",
+    "upstreamName": "Pallof Press",
+    "upstreamId": "Pallof_Press",
+    "upstreamImages": [
+      "Pallof_Press/0.jpg",
+      "Pallof_Press/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Pallof_Press",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "cable-wood-chop",
+    "exerciseName": "Cable Wood Chop",
+    "upstreamName": "Cable Seated Crunch",
+    "upstreamId": "Cable_Seated_Crunch",
+    "upstreamImages": [
+      "Cable_Seated_Crunch/0.jpg",
+      "Cable_Seated_Crunch/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Seated_Crunch",
+    "license": "Unlicense"
+  },
+  {
+    "slug": "dead-bug",
+    "exerciseName": "Dead Bug",
+    "upstreamName": "Dead Bug",
+    "upstreamId": "Dead_Bug",
+    "upstreamImages": [
+      "Dead_Bug/0.jpg",
+      "Dead_Bug/1.jpg"
+    ],
+    "matchScore": 10,
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dead_Bug",
+    "license": "Unlicense"
+  }
+]
