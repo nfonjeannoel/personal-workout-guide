@@ -58,12 +58,26 @@ NEXT_TELEMETRY_DISABLED=1
 
 The Docker image already supplies those optional defaults.
 
+### Add PostgreSQL for optional accounts
+
+1. In the same Coolify project and environment, create a PostgreSQL resource.
+2. Use its internal connection URL so traffic stays on the private Coolify network.
+3. Add these runtime-only application variables (do not mark secrets as build variables):
+
+```text
+DATABASE_URL=postgresql://...
+BETTER_AUTH_URL=https://workout.your-domain.example
+BETTER_AUTH_SECRET=<at least 32 cryptographically random characters>
+```
+
+Generate the secret with a password manager or `openssl rand -base64 32`. Keep the database private; the application is the only resource that needs access. Authentication and personal-record tables are created idempotently on the first account request. The public guide and device-only records continue to work if the database is temporarily unavailable.
+
 ## 5. Configure networking and health checks
 
 1. Set the container port to `3000` if Coolify does not detect it automatically.
 2. Configure the health-check path as `/api/health`.
 3. Expect HTTP status `200` and JSON body `{"status":"ok"}`.
-4. A 10–30 second startup grace period is sufficient on ordinary hardware.
+4. Set the startup grace period to **90 seconds**. The complete static encyclopedia is intentionally built ahead of time, and lower-powered hosts may need more than 30 seconds to start after deployment.
 
 ## 6. Add the domain and HTTPS
 
@@ -89,6 +103,7 @@ After deployment, verify:
 - An exercise detail page displays both local images.
 - `/sitemap.xml` and `/robots.txt` use the production domain.
 - `/api/health` returns `{"status":"ok"}`.
+- Creating a test account, signing out, and signing back in preserves a test record.
 
 ## 8. Enable automatic deployments
 
@@ -100,11 +115,11 @@ With the Coolify GitHub App source, automatic deployment hooks are normally crea
 
 If your Coolify installation uses a generic public repository source instead, copy its deploy webhook URL into the GitHub repository's **Settings → Webhooks** page and subscribe it to push events.
 
-## 9. Rollback
+## 9. Back up and roll back
 
-Coolify retains previous deployments according to the server's retention settings. To roll back, select a previously successful deployment and redeploy it. The application has no database, so rollback does not require a data migration.
+Coolify retains previous deployments according to the server's retention settings. To roll back, select a previously successful deployment and redeploy it. Configure scheduled PostgreSQL backups in Coolify before accepting durable account records. Database changes are additive and idempotent; do not delete the database when rolling back the application.
 
-Device-local workout logs live in each browser's `localStorage` and are unaffected by server deployments.
+Device-local workout logs live in each browser's `localStorage` and are unaffected by server deployments. Users can also export their complete record from the Account page.
 
 ## Build troubleshooting
 
@@ -112,3 +127,4 @@ Device-local workout logs live in each browser's `localStorage` and are unaffect
 - **Health check fails:** confirm port 3000 is exposed and Coolify checks `/api/health`, not `/health`.
 - **Images are missing:** make sure the repository contains `public/exercises`; no image download occurs during production builds.
 - **Node version mismatch:** use the Dockerfile or Node 20.19+.
+- **Sign-in says accounts are unavailable:** confirm `DATABASE_URL`, `BETTER_AUTH_URL`, and `BETTER_AUTH_SECRET`, then verify the application can reach the PostgreSQL resource over Coolify's internal network.

@@ -44,4 +44,6 @@ next-env.d.ts
 # local browser and QA artifacts
 /output/
 /test-results/
+/playwright-report/
+/.lighthouseci/
 /.playwright-cli/
