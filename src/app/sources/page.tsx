@@ -42,13 +42,14 @@ export default function SourcesPage() {
           <div className="max-h-[680px] overflow-auto">
             <table className="w-full border-collapse text-left text-sm">
               <thead className="sticky top-0 bg-secondary text-xs uppercase tracking-[0.12em] text-muted-foreground">
-                <tr><th className="px-4 py-3 font-medium">Site exercise</th><th className="hidden px-4 py-3 font-medium sm:table-cell">Upstream record</th><th className="px-4 py-3 font-medium">License</th></tr>
+                <tr><th className="px-4 py-3 font-medium">Site exercise</th><th className="hidden px-4 py-3 font-medium sm:table-cell">Upstream record</th><th className="hidden px-4 py-3 font-medium md:table-cell">Mapping</th><th className="px-4 py-3 font-medium">License</th></tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {attribution.map((item) => (
                   <tr key={item.slug}>
                     <td className="px-4 py-3"><Link className="font-medium hover:text-primary" href={`/exercises/${item.slug}`}>{item.exerciseName}</Link></td>
                     <td className="hidden px-4 py-3 text-muted-foreground sm:table-cell"><a className="hover:text-primary" href={item.sourceUrl} target="_blank" rel="noreferrer">{item.upstreamName}</a></td>
+                    <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">{item.mappingType}</td>
                     <td className="px-4 py-3 text-muted-foreground">{item.license}</td>
                   </tr>
                 ))}

@@ -4,7 +4,8 @@ import type { Exercise } from "@/data/exercises";
 
 export function ExerciseImagePair({ exercise, priority = false }: { exercise: Exercise; priority?: boolean }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
+    <div>
+      <div className="grid gap-3 sm:grid-cols-2">
       {exercise.images.map((image) => (
         <figure key={image.label} className="overflow-hidden rounded-2xl border border-border bg-card">
           <div className="relative aspect-[4/3] bg-muted">
@@ -22,6 +23,8 @@ export function ExerciseImagePair({ exercise, priority = false }: { exercise: Ex
           </div>
         </figure>
       ))}
+      </div>
+      <p className="mt-2 text-xs leading-5 text-muted-foreground">Illustration: <strong className="font-medium text-foreground">{exercise.illustration.upstreamName}</strong>{exercise.illustration.mappingType === "exact" ? "" : " · closest available open illustration of the same or equivalent movement"}. Follow the written setup for this equipment variation.</p>
     </div>
   );
 }

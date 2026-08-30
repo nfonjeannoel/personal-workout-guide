@@ -67,6 +67,10 @@ export interface Exercise {
   source: string;
   sourceLicense: string;
   sourceExerciseId?: string;
+  illustration: {
+    upstreamName: string;
+    mappingType: string;
+  };
 }
 
 interface Seed {
@@ -366,10 +370,55 @@ function descriptionFor(seed: Seed) {
   return `${seed.name} is a ${seed.mechanic.toLowerCase()} ${seed.movementPattern.toLowerCase()} exercise for the ${target}. Use a controlled range that keeps the target muscles loaded and the joints comfortable.`;
 }
 
+const attributionBySlug = new Map(imageAttribution.map((item) => [item.slug, item]));
+
+function specificSetup(seed: Seed): string[] {
+  const name = seed.name.toLowerCase();
+  if (name.includes("chest press") || name.includes("bench press")) return ["Set the bench or seat so the handles or bar meet the lower-to-mid chest.", "Plant the feet, keep the shoulder blades gently back and down, and use a grip that leaves the forearms vertical at the bottom."];
+  if (name.includes("fly") || name.includes("pec deck")) return ["Set the handles or pulleys so the hands travel through chest height.", "Start with a soft elbow bend and only open as far as the front of the shoulder remains comfortable."];
+  if (name.includes("pulldown") || name.includes("pull-up") || name.includes("chin-up")) return ["Secure the thighs under the pad or choose enough assistance to keep the torso stable.", `Use the ${name.includes("neutral") ? "parallel" : name.includes("underhand") || name.includes("chin") ? "palms-toward-you" : "palms-away"} grip and begin with the shoulders elevated without losing rib position.`];
+  if (name.includes("row")) return ["Set the handle or chest pad so the arms can fully reach without the shoulders rolling forward.", "Brace the torso and choose an elbow path that points toward the intended part of the back."];
+  if (name.includes("shoulder press") || name.includes("overhead press") || name.includes("arnold")) return ["Set the seat close to upright and position the handles or weights just outside shoulder width.", "Keep the ribs stacked over the pelvis and begin with the forearms close to vertical."];
+  if (name.includes("lateral raise")) return ["Position the machine pivot, cable, or dumbbells so resistance begins without a shrug.", "Lead with the elbows in the shoulder-blade plane and stop around shoulder height."];
+  if (name.includes("rear-delt") || name.includes("reverse pec") || name.includes("face pull")) return ["Set the handles near shoulder or eye height and keep the chest supported when a pad is available.", "Reach forward without rounding, then move the elbows wide while keeping the neck relaxed."];
+  if (name.includes("leg press") || name.includes("hack squat") || name.includes("pendulum")) return ["Place the feet where the knees can track over the middle toes through a deep, pain-free range.", "Adjust the back pad and safety stops before loading, then keep the hips and low back supported."];
+  if (name.includes("squat")) return ["Choose a stance that lets the knees track with the toes and the whole foot stay planted.", "Set the bar, safeties, or dumbbell securely and brace before leaving the start position."];
+  if (name.includes("lunge") || name.includes("split squat") || name.includes("step-up")) return ["Choose a step length and platform height that keep the working foot flat and the pelvis level.", "Use light support if balance would otherwise limit the target leg."];
+  if (name.includes("leg extension")) return ["Align the machine pivot with the knee and place the shin pad just above the ankle.", "Set the back pad so the hips stay down while the knee can bend comfortably."];
+  if (name.includes("deadlift") || name.includes("pull-through") || name.includes("back extension")) return ["Set the feet about hip width and begin with the load close to the body or cable between the legs.", "Unlock the knees, brace, and push the hips back until the hamstrings are loaded without rounding the spine."];
+  if (name.includes("leg curl")) return ["Align the machine pivot with the knee and place the roller just above the heel.", "Secure the thigh or hip pad so the pelvis cannot lift as the knee bends."];
+  if (name.includes("hip thrust") || name.includes("glute bridge")) return ["Place the pad across the hip crease and position the feet so the shins approach vertical at lockout.", "Set the upper back securely, tuck the chin slightly, and brace before driving the hips up."];
+  if (name.includes("abduction") || name.includes("kickback")) return ["Set the pad, cuff, or stance so the hip moves freely without the torso having to lean.", "Hold a stable support and begin with the pelvis square rather than rotated open."];
+  if (name.includes("calf")) return ["Place the ball of the working foot securely on the platform with the heel free to move.", "Straighten or bend the knee as the variation requires and keep pressure through the big-toe side of the foot."];
+  if (name.includes("curl") && !name.includes("leg")) return ["Position the upper arms so the elbows can remain still and the biceps begin lengthened.", "Choose a handle and wrist angle that allow a full curl without bending the wrist."];
+  if (name.includes("wrist")) return ["Support the forearms on a bench or thighs with the wrists just beyond the edge.", "Use a light load that permits controlled wrist motion without moving the elbows."];
+  if (name.includes("pressdown")) return ["Set the pulley high and stand far enough away that the cable clears the body.", "Pin the upper arms beside the torso and begin with the elbows fully bent."];
+  if (name.includes("triceps") || name.includes("extension") || name.includes("skull") || name.includes("close-grip") || name.includes("dip")) return ["Arrange the bench, cable, or handles so the upper arms remain stable and the elbows move comfortably.", "Use a grip that keeps the wrists stacked and start with the triceps under a controlled stretch."];
+  if (seed.muscleGroup === "Core") return ["Set the resistance and body position so the ribs begin stacked over the pelvis.", "Brace before moving and choose a range that does not create pulling in the low back or neck."];
+  return movementCopy[seed.movementPattern].setup;
+}
+
+function specificCues(seed: Seed, base: string[]) {
+  const cues = [...base];
+  if (seed.name.toLowerCase().includes("single") || seed.name.toLowerCase().includes("one-arm") || seed.name.toLowerCase().includes("one-leg")) cues.unshift("Keep the pelvis and ribs square; match both sides");
+  if (seed.equipment === "Smith machine") cues.unshift("Let the fixed rail guide the load; adjust your stance instead of fighting its path");
+  if (seed.equipment === "Cable") cues.unshift("Keep the cable aligned with the moving limb from start to finish");
+  if (seed.equipment === "Machine" || seed.equipment === "Plate-loaded") cues.unshift("Stay in contact with the pads and keep the machine pivot aligned");
+  return [...new Set(cues)].slice(0, 4);
+}
+
+const genericInstructionSlugs = new Set([
+  "lateral-raise-machine", "cable-hip-abduction", "hip-thrust-machine", "smith-hip-thrust",
+  "single-leg-press", "single-leg-calf-raise", "assisted-dip", "seated-dip-machine",
+]);
+
 const baseExercises: Exercise[] = exerciseSeeds.map((seed) => {
   const slug = slugify(seed.name);
   const copy = movementCopy[seed.movementPattern];
   const isolation = seed.mechanic === "Isolation";
+  const attribution = attributionBySlug.get(slug);
+  if (!attribution) throw new Error(`Missing image attribution for ${seed.name}`);
+  const importedInstructions = attribution.upstreamInstructions.filter((item) => typeof item === "string" && item.trim().length > 0);
   return {
     id: slug,
     slug,
@@ -381,14 +430,14 @@ const baseExercises: Exercise[] = exerciseSeeds.map((seed) => {
     difficulty: seed.difficulty ?? "Beginner",
     mechanic: seed.mechanic,
     description: descriptionFor(seed),
-    setup: [...equipmentSetup(seed.equipment), ...copy.setup],
-    instructions: copy.instructions,
+    setup: [...equipmentSetup(seed.equipment), ...specificSetup(seed)],
+    instructions: !genericInstructionSlugs.has(slug) && importedInstructions.length >= 2 ? importedInstructions : copy.instructions,
     breathing: isolation
       ? "Exhale through the effort or shortened position; inhale during the controlled return. Keep the trunk quietly braced."
       : "Inhale and brace before the lowering phase, then exhale gradually through the hardest part of the repetition without losing trunk position.",
-    formCues: copy.cues,
+    formCues: specificCues(seed, copy.cues),
     commonMistakes: copy.mistakes,
-    machineSetup: equipmentSetup(seed.equipment),
+    machineSetup: [...equipmentSetup(seed.equipment), ...specificSetup(seed)],
     recommendedRepRange: isolation ? "10–20 reps" : "6–12 reps",
     recommendedSets: isolation ? "2–3 working sets" : "3 working sets",
     restSeconds: isolation ? [60, 120] : [120, 180],
@@ -400,6 +449,8 @@ const baseExercises: Exercise[] = exerciseSeeds.map((seed) => {
     ],
     source: "Free Exercise DB by yuhonas, with original editorial guidance for this project",
     sourceLicense: "Upstream dataset and images published under the Unlicense",
+    sourceExerciseId: attribution.upstreamId,
+    illustration: { upstreamName: attribution.upstreamName, mappingType: attribution.mappingType },
   };
 });
 
@@ -438,3 +489,4 @@ export function getAlternatives(exercise: Exercise) {
     .map((slug) => exerciseBySlug.get(slug))
     .filter((item): item is Exercise => Boolean(item));
 }
+import imageAttribution from "@/data/image-attribution.json";
