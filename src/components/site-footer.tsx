@@ -9,6 +9,7 @@ export function SiteFooter() {
           <Link className="hover:text-foreground" href="/about">About</Link>
           <Link className="hover:text-foreground" href="/sources">Sources</Link>
           <Link className="hover:text-foreground" href="/guides">Training guides</Link>
+          <Link className="hover:text-foreground" href="/account">Account & backup</Link>
           <a className="hover:text-foreground" href="https://github.com/nfonjeannoel/personal-workout-guide" rel="noreferrer" target="_blank">GitHub</a>
         </nav>
       </div>

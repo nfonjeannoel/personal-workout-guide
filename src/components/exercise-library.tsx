@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Search, SlidersHorizontal, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -35,6 +35,7 @@ export function ExerciseLibrary({ items, muscleGroups, equipmentTypes, movementP
   const [equipment, setEquipment] = useState("All");
   const [pattern, setPattern] = useState("All");
   const [difficulty, setDifficulty] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(30);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -49,6 +50,11 @@ export function ExerciseLibrary({ items, muscleGroups, equipmentTypes, movementP
       );
     });
   }, [difficulty, equipment, items, muscle, pattern, query]);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setVisibleCount(30));
+    return () => window.cancelAnimationFrame(frame);
+  }, [difficulty, equipment, muscle, pattern, query]);
 
   const hasFilters = query || muscle !== "All" || equipment !== "All" || pattern !== "All" || difficulty !== "All";
 
@@ -89,7 +95,7 @@ export function ExerciseLibrary({ items, muscleGroups, equipmentTypes, movementP
 
       {filtered.length ? (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((item) => (
+          {filtered.slice(0, visibleCount).map((item) => (
             <article key={item.slug} className="group overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/40">
               <Link href={`/exercises/${item.slug}`} className="block focus-visible:outline-none">
                 <div className="relative aspect-[4/3] overflow-hidden bg-muted">
@@ -123,6 +129,7 @@ export function ExerciseLibrary({ items, muscleGroups, equipmentTypes, movementP
           <Button className="mt-5" onClick={clearFilters}>Clear filters</Button>
         </div>
       )}
+      {filtered.length > visibleCount && <div className="mt-7 text-center"><Button variant="outline" className="h-11 rounded-xl px-6" onClick={() => setVisibleCount((count) => count + 30)}>Show 30 more <span className="text-muted-foreground">({filtered.length - visibleCount} remaining)</span></Button></div>}
     </div>
   );
 }

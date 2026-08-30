@@ -3,6 +3,7 @@ import { Dumbbell, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { AccountButton } from "@/components/account-button";
 
 export function SiteHeader() {
   return (
@@ -18,6 +19,7 @@ export function SiteHeader() {
           <Link className="transition-colors hover:text-foreground" href="/">Today</Link>
           <Link className="transition-colors hover:text-foreground" href="/workout">Program</Link>
           <Link className="transition-colors hover:text-foreground" href="/exercises">Exercises</Link>
+          <Link className="transition-colors hover:text-foreground" href="/my-training">My training</Link>
           <Link className="transition-colors hover:text-foreground" href="/progression">Progression</Link>
           <Link className="transition-colors hover:text-foreground" href="/guides">Guides</Link>
         </nav>
@@ -26,6 +28,7 @@ export function SiteHeader() {
             <Search className="size-4" /> Find exercise
           </Button>
           <ThemeToggle />
+          <AccountButton />
         </div>
       </div>
     </header>

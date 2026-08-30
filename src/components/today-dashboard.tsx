@@ -8,9 +8,9 @@ import { WorkoutSession, type WorkoutExerciseSummary } from "@/components/workou
 import { Button } from "@/components/ui/button";
 import type { WorkoutDay } from "@/data/workouts";
 
-export function TodayDashboard({ days, exerciseMap }: { days: WorkoutDay[]; exerciseMap: Record<string, WorkoutExerciseSummary> }) {
-  const dayNumber = useSyncExternalStore(noopSubscribe, getLocalDayNumber, () => 1);
-  const dateLabel = useSyncExternalStore(noopSubscribe, getLocalDateLabel, () => "");
+export function TodayDashboard({ days, exerciseMap, serverDayNumber, serverDateLabel }: { days: WorkoutDay[]; exerciseMap: Record<string, WorkoutExerciseSummary>; serverDayNumber: number; serverDateLabel: string }) {
+  const dayNumber = useSyncExternalStore(noopSubscribe, getLocalDayNumber, () => serverDayNumber);
+  const dateLabel = useSyncExternalStore(noopSubscribe, getLocalDateLabel, () => serverDateLabel);
 
   const day = days.find((item) => item.day === dayNumber) ?? days[0];
   return (

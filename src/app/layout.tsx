@@ -5,6 +5,8 @@ import type { ReactNode } from "react";
 import { MobileNav } from "@/components/mobile-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { TrainingDataProvider } from "@/components/training-data-provider";
+import { ServiceWorkerRegistration } from "@/components/service-worker-registration";
 
 import "./globals.css";
 
@@ -30,10 +32,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} dark h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full">
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <MobileNav />
+        <TrainingDataProvider>
+          <ServiceWorkerRegistration />
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <MobileNav />
+        </TrainingDataProvider>
       </body>
     </html>
   );

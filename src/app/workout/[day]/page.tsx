@@ -29,6 +29,8 @@ export default async function WorkoutDayPage({ params }: Props) {
     name: exercise.name,
     muscleGroup: exercise.muscleGroup,
     image: exercise.images[0].src,
+    repRange: exercise.recommendedRepRange,
+    alternatives: exercise.alternatives,
   }]));
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">

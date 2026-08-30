@@ -102,7 +102,7 @@ export default async function ExercisePage({ params }: Props) {
               <p className="mt-5 text-sm leading-6 text-muted-foreground">{exercise.rir}. Stop earlier if technique changes or a joint feels irritated.</p>
             </section>
             <RestTimer defaultSeconds={exercise.restSeconds[0]} />
-            <ExerciseTracker slug={exercise.slug} name={exercise.name} />
+            <ExerciseTracker slug={exercise.slug} name={exercise.name} recommendedSets={exercise.recommendedSets} repRange={exercise.recommendedRepRange} />
           </aside>
         </div>
       </div>
