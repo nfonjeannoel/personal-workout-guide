@@ -113,7 +113,7 @@ export function AccountPanel() {
             </>
           ) : <Field label="Email or username" name="identifier" autoComplete="username" placeholder="you@example.com or gymname" />}
           <Field label="Password" name="password" type="password" autoComplete={mode === "signup" ? "new-password" : "current-password"} minLength={10} placeholder="At least 10 characters" />
-          <Button className="h-11 w-full rounded-xl" disabled={busy}>{busy ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}</Button>
+          <Button type="submit" className="h-11 w-full rounded-xl" disabled={busy}>{busy ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}</Button>
         </form>
         {message && <p className="mt-4 rounded-xl bg-secondary px-4 py-3 text-sm" role="status">{message}</p>}
         <div className="mt-6 flex gap-3 text-xs leading-5 text-muted-foreground"><ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" /><p>An account is optional. Without one, records stay in this browser. Signing in merges those records into your private account data.</p></div>

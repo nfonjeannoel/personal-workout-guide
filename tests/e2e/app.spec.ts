@@ -38,6 +38,13 @@ test("PWA manifest and offline worker are published", async ({ request }) => {
   expect(await worker.text()).toContain("PRECACHE");
 });
 
+test("account actions submit the authentication form", async ({ page }) => {
+  await page.goto("/account");
+  await expect(page.getByRole("button", { name: "Sign in", exact: true })).toHaveAttribute("type", "submit");
+  await page.getByRole("tab", { name: "Create account" }).click();
+  await expect(page.getByRole("button", { name: "Create account", exact: true })).toHaveAttribute("type", "submit");
+});
+
 test("a viewed exercise remains available offline", async ({ page, context }) => {
   await page.goto("/exercises/machine-chest-press");
   await page.evaluate(() => navigator.serviceWorker.ready);
