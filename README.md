@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Form / Function
 
-## Getting Started
+A mobile-first personal workout guide built for practical use between gym sets. It combines a seven-day upper/lower program, a 112-exercise encyclopedia, local start/finish imagery, equipment-aware alternatives, and device-local progress tools.
 
-First, run the development server:
+## What is included
+
+- Today's workout based on the visitor's local weekday
+- Complete Day 1–7 program with sets, reps, rest, and RIR targets
+- 112 statically generated exercise detail pages
+- 224 locally stored start/finish exercise images
+- Instant search across exercise, muscle, equipment, and movement pattern
+- Muscle, equipment, movement, and difficulty filters
+- Machine, cable, free-weight, and bodyweight alternatives
+- Setup, instructions, breathing, cues, common mistakes, and machine adjustments
+- Favorites, last weight/reps, personal notes, and completed-workout state in `localStorage`
+- Rest timer with 60, 90, 120, and 180 second presets
+- Per-exercise SEO metadata, sitemap, robots, social card, and health endpoint
+- Next.js standalone output and a production multi-stage Docker image
+
+No account, database, or external runtime API is required.
+
+## Stack
+
+- Next.js 16 App Router
+- React 19 + TypeScript
+- Tailwind CSS 4
+- shadcn/ui primitives powered by Base UI
+- Lucide icons
+- Static typed exercise and workout data
+- Next/Image with local assets
+
+## Local development
+
+Requirements: Node.js 20.19 or newer and npm.
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Set `NEXT_PUBLIC_SITE_URL` to the canonical URL used for metadata, sitemap, and social images. Local development defaults to `http://localhost:3000`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Quality checks
 
-## Learn More
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Health check:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+curl http://localhost:3000/api/health
+# {"status":"ok"}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Docker
 
-## Deploy on Vercel
+```bash
+docker build -t personal-workout-guide .
+docker run --rm -p 3000:3000 \
+  -e NEXT_PUBLIC_SITE_URL=http://localhost:3000 \
+  personal-workout-guide
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The image uses Next.js standalone output and runs as an unprivileged `nextjs` user.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Coolify
+
+Connect the GitHub repository, select the `main` branch, and deploy with the included Dockerfile. Configure:
+
+- Port: `3000`
+- Health path: `/api/health`
+- Environment variable: `NEXT_PUBLIC_SITE_URL=https://your-domain.example`
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the complete GitHub → Coolify procedure.
+
+## Architecture
+
+```text
+src/
+  app/                  App Router pages, metadata, sitemap, and health route
+  components/           Server and focused client components
+  data/
+    exercises.ts        Typed exercise model, seeds, coaching templates, alternatives
+    workouts.ts         Seven-day weekly program
+    image-attribution.json
+public/exercises/       Local start/finish imagery by stable exercise slug
+scripts/                Repeatable image import pipeline
+docs/                   Deployment documentation
+THIRD_PARTY_LICENSES/   Preserved upstream license text
+```
+
+All exercise detail URLs are stable at `/exercises/[slug]`. Client-side persistence is deliberately isolated to interactive components so the exercise content remains statically generated and a future synced backend can replace local storage without changing the content model.
+
+## Updating exercise images
+
+The checked-in site is self-contained; the upstream repository is not needed at build time. To regenerate localized images from a local Free Exercise DB clone:
+
+```bash
+git clone --depth 1 https://github.com/yuhonas/free-exercise-db.git ../free-exercise-db
+npm run images:import -- ../free-exercise-db
+```
+
+The importer copies two images per exercise and regenerates `src/data/image-attribution.json`.
+
+## Data and image attribution
+
+Exercise imagery is derived from [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db), which publishes its repository under the Unlicense/public-domain dedication. The exact exercise-to-source mapping appears at `/sources` and in `src/data/image-attribution.json`. A copy of the upstream license is preserved under `THIRD_PARTY_LICENSES/`.
+
+Editorial setup instructions, technique cues, mistakes, prescriptions, and alternative grouping were prepared for this project. See [NOTICE.md](NOTICE.md).
+
+## License
+
+Project code and original editorial content are available under the [MIT License](LICENSE). Third-party assets retain the terms documented in `NOTICE.md` and `THIRD_PARTY_LICENSES/`.
