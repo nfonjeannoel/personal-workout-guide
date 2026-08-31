@@ -152,7 +152,7 @@ export function MyTrainingDashboard({ exercises }: { exercises: TrainingExercise
           <section className="rounded-3xl border border-border bg-card p-4 sm:p-5" aria-labelledby="calendar-heading">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[.14em] text-primary">Training calendar</p>
+                <p className="text-xs font-semibold uppercase tracking-[.14em] text-foreground">Training calendar</p>
                 <h2 id="calendar-heading" className="mt-1 text-xl font-semibold">{new Intl.DateTimeFormat(undefined, { month: "long", year: "numeric" }).format(viewMonth)}</h2>
               </div>
               <div className="flex gap-1">
@@ -162,7 +162,7 @@ export function MyTrainingDashboard({ exercises }: { exercises: TrainingExercise
             </div>
             <div className="mt-5 grid grid-cols-7 text-center text-[10px] font-semibold uppercase tracking-wider text-muted-foreground" aria-hidden="true">{weekdays.map((day) => <span key={day}>{day}</span>)}</div>
             <div className="mt-2 grid grid-cols-7 gap-1" role="grid" aria-label="Workout dates">
-              {cells.map((cell) => {
+              {Array.from({ length: 6 }, (_, weekIndex) => <div key={weekIndex} role="row" className="contents">{cells.slice(weekIndex * 7, weekIndex * 7 + 7).map((cell) => {
                 const record = sessionsByDate.get(cell.key)?.[0];
                 const day = record ? workoutDays.find((item) => item.slug === record.daySlug) : undefined;
                 const status = sessionStatus(record, day ? totalItems(day) : 0);
@@ -177,13 +177,13 @@ export function MyTrainingDashboard({ exercises }: { exercises: TrainingExercise
                     aria-selected={selected}
                     aria-label={`${new Intl.DateTimeFormat(undefined, { dateStyle: "full" }).format(cell.date)}, ${statusLabel}`}
                     onClick={() => selectDate(cell.key)}
-                    className={`relative grid min-h-11 place-items-center rounded-xl text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${selected ? "bg-foreground text-background" : status === "complete" ? "bg-primary text-primary-foreground" : status === "active" ? "border border-primary/60 bg-primary/10 text-foreground" : "hover:bg-muted"} ${cell.inMonth ? "" : "opacity-35"}`}
+                    className={`relative grid min-h-11 place-items-center rounded-xl text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${selected ? "bg-foreground text-background" : status === "complete" ? "bg-primary text-primary-foreground" : status === "active" ? "border border-primary/60 bg-primary/10 text-foreground" : "hover:bg-muted"} ${cell.inMonth ? "" : "text-muted-foreground"}`}
                   >
                     <span className={current && !selected ? "underline decoration-primary decoration-2 underline-offset-4" : ""}>{cell.day}</span>
                     {status === "planned" && <span className="absolute bottom-1 size-1 rounded-full bg-primary" />}
                   </button>
                 );
-              })}
+              })}</div>)}
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-4 text-[11px] text-muted-foreground">
               <span className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-primary" /> Complete</span>
@@ -200,7 +200,7 @@ export function MyTrainingDashboard({ exercises }: { exercises: TrainingExercise
         <section className="min-w-0 rounded-3xl border border-border bg-card p-4 sm:p-6 lg:p-8" aria-live="polite">
           <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border pb-6">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[.16em] text-primary">{selectedDate === today ? "Today" : selectedDate > today ? "Plan ahead" : "Journal entry"}</p>
+              <p className="text-xs font-semibold uppercase tracking-[.16em] text-foreground">{selectedDate === today ? "Today" : selectedDate > today ? "Plan ahead" : "Journal entry"}</p>
               <h2 className="mt-2 text-3xl font-semibold tracking-tight">{new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric" }).format(dateFromKey(selectedDate))}</h2>
             </div>
             {selectedDay && <span className="rounded-full bg-secondary px-3 py-1.5 text-xs font-medium">{selectedDay.title}</span>}
@@ -244,7 +244,7 @@ function WorkoutChooser({ selectedDate, today, onChoose }: { selectedDate: strin
         {journalChoices.map((day) => (
           <button key={day.slug} type="button" onClick={() => onChoose(day)} className="group flex min-h-32 items-start gap-4 rounded-2xl border border-border p-4 text-left transition-colors hover:border-primary/50 hover:bg-primary/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-primary">{day.type === "training" ? <Dumbbell className="size-4" /> : <Sparkles className="size-4" />}</span>
-            <span className="min-w-0 flex-1"><span className="text-xs uppercase tracking-[.14em] text-primary">{day.label}</span><strong className="mt-1 block text-lg">{day.title}</strong><span className="mt-1 block text-sm leading-5 text-muted-foreground">{day.emphasis} · {day.estimatedMinutes}</span></span>
+            <span className="min-w-0 flex-1"><span className="text-xs font-semibold uppercase tracking-[.14em] text-foreground">{day.label}</span><strong className="mt-1 block text-lg">{day.title}</strong><span className="mt-1 block text-sm leading-5 text-muted-foreground">{day.emphasis} · {day.estimatedMinutes}</span></span>
             <ArrowRight className="mt-1 size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </button>
         ))}

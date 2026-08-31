@@ -44,9 +44,9 @@ test("calendar journal plans a workout and preserves set-by-set progress", async
 });
 
 test("core pages have no serious accessibility violations", async ({ page }, testInfo) => {
-  for (const path of ["/", "/exercises", "/exercises/machine-chest-press", "/workout/day-1", "/account"]) {
+  for (const path of ["/", "/exercises", "/exercises/machine-chest-press", "/workout/day-1", "/my-training", "/account"]) {
     await page.goto(path);
-    await expect(page.getByText("Loading account")).toHaveCount(0);
+    await expect(page.getByText("Loading account")).toHaveCount(0, { timeout: 15_000 });
     const results = await new AxeBuilder({ page }).disableRules(["color-contrast"]).analyze();
     expect(results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact ?? "")), `${path} accessibility violations on ${testInfo.project.name}`).toEqual([]);
   }
