@@ -91,6 +91,8 @@ test("key layouts do not overflow supported viewports", async ({ page }) => {
 });
 
 test("mobile and desktop visual baselines", async ({ page }, testInfo) => {
+  await page.clock.setFixedTime(new Date("2026-08-24T16:00:00.000Z"));
   await page.goto("/");
+  await expect(page.getByRole("heading", { name: "Upper A", level: 1 })).toBeVisible();
   await expect(page).toHaveScreenshot(`today-${testInfo.project.name}.png`, { fullPage: true, animations: "disabled", maxDiffPixelRatio: 0.02 });
 });
