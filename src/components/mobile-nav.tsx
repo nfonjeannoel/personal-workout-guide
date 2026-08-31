@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, Dumbbell, Library, UserRound } from "lucide-react";
+import { BookOpenCheck, CalendarDays, Dumbbell, Library } from "lucide-react";
 
 const items = [
   { href: "/", label: "Today", icon: Dumbbell },
   { href: "/workout", label: "Program", icon: CalendarDays },
   { href: "/exercises", label: "Library", icon: Library },
-  { href: "/my-training", label: "Mine", icon: UserRound },
+  { href: "/my-training", label: "Journal", icon: BookOpenCheck },
 ];
 
 export function MobileNav() {

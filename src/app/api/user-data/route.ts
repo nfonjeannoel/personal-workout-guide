@@ -11,7 +11,20 @@ export const runtime = "nodejs";
 const loggedSetSchema = z.object({ reps: z.number().int().min(0).max(100).nullable(), rir: z.number().int().min(0).max(10).nullable(), completed: z.boolean() });
 const performanceSchema = z.object({ id: z.string().max(120), performedAt: z.string().max(40), weight: z.string().max(100), sets: z.array(loggedSetSchema).max(20), notes: z.string().max(2_000).optional() });
 const exerciseRecordSchema = z.object({ favorite: z.boolean(), notes: z.string().max(5_000), history: z.array(performanceSchema).max(100), updatedAt: z.string().max(40) });
-const workoutSchema = z.object({ id: z.string().max(160), daySlug: z.string().max(80), weekKey: z.string().max(20), completedExercises: z.array(z.string().max(120)).max(30), completedAt: z.string().max(40).optional(), updatedAt: z.string().max(40) });
+const journalExerciseLogSchema = z.object({ exerciseSlug: z.string().max(120), weight: z.string().max(100), sets: z.array(loggedSetSchema).max(20), notes: z.string().max(2_000).optional(), updatedAt: z.string().max(40) });
+const workoutSchema = z.object({
+  id: z.string().max(160),
+  daySlug: z.string().max(80),
+  weekKey: z.string().max(20),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  startedAt: z.string().max(40).optional(),
+  completedExercises: z.array(z.string().max(120)).max(30),
+  exerciseLogs: z.record(z.string().max(120), journalExerciseLogSchema).optional(),
+  notes: z.string().max(5_000).optional(),
+  feeling: z.enum(["rough", "steady", "strong"]).optional(),
+  completedAt: z.string().max(40).optional(),
+  updatedAt: z.string().max(40),
+});
 const swapSchema = z.object({ id: z.string().max(240), originalSlug: z.string().max(120), replacementSlug: z.string().max(120), daySlug: z.string().max(80).optional(), swappedAt: z.string().max(40) });
 const payloadSchema = z.object({ data: z.object({
   version: z.number().int().min(1).max(10),

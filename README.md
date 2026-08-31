@@ -12,7 +12,8 @@ A mobile-first personal workout guide built for practical use between gym sets. 
 - Muscle, equipment, movement, and difficulty filters
 - Machine, cable, free-weight, and bodyweight alternatives
 - Setup, instructions, breathing, cues, common mistakes, and machine adjustments
-- Set-by-set weight, reps, RIR, workout history, exercise swaps, favorites, notes, and automatic next-session targets
+- Calendar training journal for planning any workout group on any date, with live completion progress and a dated session logbook
+- Set-by-set weight, reps, RIR, reflections, exercise swaps, favorites, notes, recent lifts, and automatic next-session targets
 - Optional username/email and password accounts backed by PostgreSQL; guest records merge on sign-in
 - JSON record export/import and a Favorites/Recently Viewed dashboard
 - Background-safe rest timer with vibration, sound, and optional system notification

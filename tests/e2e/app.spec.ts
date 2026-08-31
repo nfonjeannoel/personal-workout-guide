@@ -20,6 +20,29 @@ test("today, search, exercise logging, and personal history work", async ({ page
   await expect(page.getByText("25 kg · 12 reps")).toBeVisible();
 });
 
+test("calendar journal plans a workout and preserves set-by-set progress", async ({ page }) => {
+  await page.goto("/my-training");
+  await expect(page.getByRole("heading", { name: "Training journal", level: 1 })).toBeVisible();
+  await expect(page.getByRole("grid", { name: "Workout dates" })).toBeVisible();
+  await page.getByRole("button", { name: /Upper A/ }).click();
+  await expect(page.getByRole("heading", { name: "Upper A", exact: true })).toBeVisible();
+  await expect(page.getByText("0/7 complete").first()).toBeVisible();
+
+  await page.getByRole("button", { name: "Log sets" }).first().click();
+  await page.getByRole("textbox", { name: "Working weight or resistance" }).fill("60 kg");
+  await page.getByLabel("Machine Chest Press set 1 repetitions").fill("10");
+  await page.getByLabel("Machine Chest Press set 2 repetitions").fill("9");
+  await page.getByLabel("Machine Chest Press set 3 repetitions").fill("8");
+  await page.getByRole("button", { name: "Save set log" }).click();
+  await expect(page.getByText("1/7 complete").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "Set log saved" })).toBeVisible();
+
+  await page.reload();
+  await page.getByRole("button", { name: "Edit set log" }).first().click();
+  await expect(page.getByRole("textbox", { name: "Working weight or resistance" })).toHaveValue("60 kg");
+  await expect(page.getByLabel("Machine Chest Press set 1 repetitions")).toHaveValue("10");
+});
+
 test("core pages have no serious accessibility violations", async ({ page }, testInfo) => {
   for (const path of ["/", "/exercises", "/exercises/machine-chest-press", "/workout/day-1", "/account"]) {
     await page.goto(path);

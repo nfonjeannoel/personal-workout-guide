@@ -19,7 +19,7 @@ export function SiteHeader() {
           <Link className="transition-colors hover:text-foreground" href="/">Today</Link>
           <Link className="transition-colors hover:text-foreground" href="/workout">Program</Link>
           <Link className="transition-colors hover:text-foreground" href="/exercises">Exercises</Link>
-          <Link className="transition-colors hover:text-foreground" href="/my-training">My training</Link>
+          <Link className="transition-colors hover:text-foreground" href="/my-training">Journal</Link>
           <Link className="transition-colors hover:text-foreground" href="/progression">Progression</Link>
           <Link className="transition-colors hover:text-foreground" href="/guides">Guides</Link>
         </nav>

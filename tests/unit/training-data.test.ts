@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { emptyTrainingData, mergeTrainingData, nextProgressionTarget, type ExerciseRecord } from "@/lib/training-data";
+import { emptyTrainingData, mergeTrainingData, nextProgressionTarget, workoutDate, type ExerciseRecord } from "@/lib/training-data";
 
 const record = (reps: number[]): ExerciseRecord => ({
   favorite: false,
@@ -31,5 +31,25 @@ describe("mergeTrainingData", () => {
     expect(merged.exercises.press.favorite).toBe(true);
     expect(merged.exercises.press.history).toHaveLength(2);
     expect(merged.recent).toEqual(["press", "row"]);
+  });
+
+  it("keeps the newest calendar completion state while preserving exercise logs", () => {
+    const local = emptyTrainingData();
+    local.workouts = [{ id: "journal-2026-08-30", daySlug: "day-1", weekKey: "2026-08-24", date: "2026-08-30", completedExercises: [], exerciseLogs: {}, updatedAt: "2026-08-30T14:00:00.000Z" }];
+    const remote = emptyTrainingData();
+    remote.workouts = [{ id: "journal-2026-08-30", daySlug: "day-1", weekKey: "2026-08-24", date: "2026-08-30", completedExercises: ["machine-chest-press"], exerciseLogs: { "machine-chest-press": { exerciseSlug: "machine-chest-press", weight: "50 kg", sets: [{ reps: 10, rir: 2, completed: true }], updatedAt: "2026-08-30T13:00:00.000Z" } }, updatedAt: "2026-08-30T13:00:00.000Z" }];
+    const merged = mergeTrainingData(local, remote);
+    expect(merged.workouts[0].completedExercises).toEqual([]);
+    expect(merged.workouts[0].exerciseLogs?.["machine-chest-press"].weight).toBe("50 kg");
+  });
+});
+
+describe("workoutDate", () => {
+  it("uses an explicit journal date", () => {
+    expect(workoutDate({ id: "journal", daySlug: "day-4", weekKey: "2026-08-24", date: "2026-09-03", completedExercises: [], updatedAt: "2026-09-03T12:00:00.000Z" })).toBe("2026-09-03");
+  });
+
+  it("places legacy weekly sessions on their inferred calendar day", () => {
+    expect(workoutDate({ id: "legacy", daySlug: "day-4", weekKey: "2026-08-24", completedExercises: [], updatedAt: "2026-08-27T12:00:00.000Z" })).toBe("2026-08-27");
   });
 });

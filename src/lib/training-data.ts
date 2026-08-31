@@ -1,5 +1,5 @@
 export const TRAINING_DATA_KEY = "ff-training-data-v2";
-export const TRAINING_DATA_VERSION = 2;
+export const TRAINING_DATA_VERSION = 3;
 
 export interface LoggedSet {
   reps: number | null;
@@ -26,8 +26,21 @@ export interface WorkoutRecord {
   id: string;
   daySlug: string;
   weekKey: string;
+  date?: string;
+  startedAt?: string;
   completedExercises: string[];
+  exerciseLogs?: Record<string, JournalExerciseLog>;
+  notes?: string;
+  feeling?: "rough" | "steady" | "strong";
   completedAt?: string;
+  updatedAt: string;
+}
+
+export interface JournalExerciseLog {
+  exerciseSlug: string;
+  weight: string;
+  sets: LoggedSet[];
+  notes?: string;
   updatedAt: string;
 }
 
@@ -83,12 +96,49 @@ export function normalizeTrainingData(value: unknown): TrainingData {
       exercises[slug] = { favorite: Boolean(candidate.favorite), notes: typeof candidate.notes === "string" ? candidate.notes.slice(0, 5_000) : "", history, updatedAt: typeof candidate.updatedAt === "string" ? candidate.updatedAt.slice(0, 40) : new Date(0).toISOString() };
     }
   }
+  const workouts = Array.isArray(data.workouts) ? data.workouts.flatMap((item) => {
+    if (!item || typeof item !== "object") return [];
+    const candidate = item as Partial<WorkoutRecord>;
+    if (typeof candidate.id !== "string" || typeof candidate.daySlug !== "string" || typeof candidate.weekKey !== "string" || !Array.isArray(candidate.completedExercises) || typeof candidate.updatedAt !== "string") return [];
+    const exerciseLogs: Record<string, JournalExerciseLog> = {};
+    if (candidate.exerciseLogs && typeof candidate.exerciseLogs === "object") {
+      for (const [originalSlug, rawLog] of Object.entries(candidate.exerciseLogs)) {
+        if (!rawLog || typeof rawLog !== "object" || originalSlug.length > 120) continue;
+        const log = rawLog as Partial<JournalExerciseLog>;
+        if (typeof log.exerciseSlug !== "string" || typeof log.updatedAt !== "string" || !Array.isArray(log.sets)) continue;
+        exerciseLogs[originalSlug] = {
+          exerciseSlug: log.exerciseSlug.slice(0, 120),
+          weight: typeof log.weight === "string" ? log.weight.slice(0, 100) : "",
+          sets: log.sets.slice(0, 20).flatMap((set) => {
+            if (!set || typeof set !== "object") return [];
+            return [{ reps: typeof set.reps === "number" && Number.isFinite(set.reps) ? Math.max(0, Math.min(100, Math.round(set.reps))) : null, rir: typeof set.rir === "number" && Number.isFinite(set.rir) ? Math.max(0, Math.min(10, Math.round(set.rir))) : null, completed: Boolean(set.completed) }];
+          }),
+          notes: typeof log.notes === "string" ? log.notes.slice(0, 2_000) : undefined,
+          updatedAt: log.updatedAt.slice(0, 40),
+        };
+      }
+    }
+    const feeling = candidate.feeling === "rough" || candidate.feeling === "steady" || candidate.feeling === "strong" ? candidate.feeling : undefined;
+    return [{
+      id: candidate.id.slice(0, 160),
+      daySlug: candidate.daySlug.slice(0, 80),
+      weekKey: candidate.weekKey.slice(0, 20),
+      date: typeof candidate.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(candidate.date) ? candidate.date : undefined,
+      startedAt: typeof candidate.startedAt === "string" ? candidate.startedAt.slice(0, 40) : undefined,
+      completedExercises: candidate.completedExercises.filter((entry): entry is string => typeof entry === "string").slice(0, 30),
+      exerciseLogs,
+      notes: typeof candidate.notes === "string" ? candidate.notes.slice(0, 5_000) : undefined,
+      feeling,
+      completedAt: typeof candidate.completedAt === "string" ? candidate.completedAt.slice(0, 40) : undefined,
+      updatedAt: candidate.updatedAt.slice(0, 40),
+    } satisfies WorkoutRecord];
+  }).slice(0, 250) : [];
   return {
     ...empty,
     ...data,
     version: TRAINING_DATA_VERSION,
     exercises,
-    workouts: Array.isArray(data.workouts) ? data.workouts.filter((item): item is WorkoutRecord => Boolean(item && typeof item.id === "string" && typeof item.daySlug === "string" && typeof item.weekKey === "string" && Array.isArray(item.completedExercises) && typeof item.updatedAt === "string")).slice(0, 250) : [],
+    workouts,
     swaps: Array.isArray(data.swaps) ? data.swaps.filter((item): item is ExerciseSwap => Boolean(item && typeof item.id === "string" && typeof item.originalSlug === "string" && typeof item.replacementSlug === "string" && typeof item.swappedAt === "string")).slice(0, 250) : [],
     recent: Array.isArray(data.recent) ? data.recent.filter((item): item is string => typeof item === "string").slice(0, 12) : [],
     settings: { ...empty.settings, ...(data.settings ?? {}) },
@@ -119,7 +169,20 @@ export function mergeTrainingData(local: TrainingData, remote: TrainingData): Tr
     };
   }
 
-  const workouts = new Map([...remote.workouts, ...local.workouts].map((item) => [item.id, item]));
+  const workouts = new Map<string, WorkoutRecord>();
+  for (const item of [...remote.workouts, ...local.workouts]) {
+    const existing = workouts.get(item.id);
+    if (!existing) {
+      workouts.set(item.id, item);
+      continue;
+    }
+    const latest = Date.parse(item.updatedAt) >= Date.parse(existing.updatedAt) ? item : existing;
+    const logs: Record<string, JournalExerciseLog> = { ...(existing.exerciseLogs ?? {}) };
+    for (const [slug, log] of Object.entries(item.exerciseLogs ?? {})) {
+      if (!logs[slug] || Date.parse(log.updatedAt) >= Date.parse(logs[slug].updatedAt)) logs[slug] = log;
+    }
+    workouts.set(item.id, { ...latest, completedExercises: latest.completedExercises, exerciseLogs: logs });
+  }
   const swaps = new Map([...remote.swaps, ...local.swaps].map((item) => [item.id, item]));
   const updatedAt = Date.parse(local.updatedAt) >= Date.parse(remote.updatedAt) ? local.updatedAt : remote.updatedAt;
 
@@ -132,6 +195,15 @@ export function mergeTrainingData(local: TrainingData, remote: TrainingData): Tr
     settings: { ...remote.settings, ...local.settings },
     updatedAt,
   };
+}
+
+export function workoutDate(record: WorkoutRecord) {
+  if (record.date && /^\d{4}-\d{2}-\d{2}$/.test(record.date)) return record.date;
+  const dayNumber = Number(record.daySlug.match(/day-(\d+)/)?.[1]);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(record.weekKey) || !Number.isFinite(dayNumber)) return record.updatedAt.slice(0, 10);
+  const [year, month, day] = record.weekKey.split("-").map(Number);
+  const date = new Date(year, month - 1, day + Math.max(0, dayNumber - 1), 12);
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
 export function nextProgressionTarget(record: ExerciseRecord | undefined, repRange: string) {
