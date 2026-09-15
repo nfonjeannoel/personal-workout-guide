@@ -12,6 +12,8 @@ export function ExerciseImagePair({ exercise, priority = false }: { exercise: Ex
             <Image
               src={image.src}
               alt={image.alt}
+              // Use the same local files as the offline cache, avoiding runtime image processing.
+              unoptimized
               fill
               priority={priority}
               sizes="(max-width: 640px) 100vw, 50vw"
