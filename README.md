@@ -13,6 +13,11 @@ A mobile-first personal workout guide built for practical use between gym sets. 
 - Machine, cable, free-weight, and bodyweight alternatives
 - Setup, instructions, breathing, cues, common mistakes, and machine adjustments
 - Calendar training journal for planning any workout group on any date, with live completion progress and a dated session logbook
+- Shared dated sessions across Today, the workout view, exercise form guides, and the journal
+- Session renaming, date corrections, deletion, and multiple sessions on the same date
+- Custom workouts with library exercises or your own named movements
+- Automatically saved working sets, with up to 20 sets per exercise
+- History-based alternative suggestions that preserve exercises already logged
 - Set-by-set weight, reps, RIR, reflections, exercise swaps, favorites, notes, recent lifts, and automatic next-session targets
 - Optional username/email and password accounts backed by PostgreSQL; guest records merge on sign-in
 - JSON record export/import and a Favorites/Recently Viewed dashboard

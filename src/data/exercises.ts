@@ -459,14 +459,10 @@ export const exercises: Exercise[] = baseExercises.map((exercise) => {
     (candidate) =>
       candidate.slug !== exercise.slug &&
       candidate.muscleGroup === exercise.muscleGroup &&
-      candidate.movementPattern === exercise.movementPattern,
+      candidate.movementPattern === exercise.movementPattern &&
+      candidate.mechanic === exercise.mechanic,
   );
-  const sameMuscle = baseExercises.filter(
-    (candidate) => candidate.slug !== exercise.slug && candidate.muscleGroup === exercise.muscleGroup,
-  );
-  const candidates = [...exactPattern, ...sameMuscle].filter(
-    (candidate, index, array) => array.findIndex((item) => item.slug === candidate.slug) === index,
-  );
+  const candidates = exactPattern;
   const varied = candidates.sort((a, b) => {
     const aDifferent = a.equipment === exercise.equipment ? 1 : 0;
     const bDifferent = b.equipment === exercise.equipment ? 1 : 0;

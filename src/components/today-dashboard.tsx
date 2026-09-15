@@ -5,6 +5,8 @@ import { useSyncExternalStore } from "react";
 import { ArrowRight, BookOpen, CalendarDays, Library } from "lucide-react";
 
 import { WorkoutSession, type WorkoutExerciseSummary } from "@/components/workout-session";
+import { useTrainingData } from "@/components/training-data-provider";
+import { localDateKey, sessionDay, workoutDate } from "@/lib/training-data";
 import { Button } from "@/components/ui/button";
 import type { WorkoutDay } from "@/data/workouts";
 
@@ -12,7 +14,9 @@ export function TodayDashboard({ days, exerciseMap, serverDayNumber, serverDateL
   const dayNumber = useSyncExternalStore(noopSubscribe, getLocalDayNumber, () => serverDayNumber);
   const dateLabel = useSyncExternalStore(noopSubscribe, getLocalDateLabel, () => serverDateLabel);
 
-  const day = days.find((item) => item.day === dayNumber) ?? days[0];
+  const { data } = useTrainingData();
+  const session = data.workouts.find((item) => workoutDate(item) === localDateKey());
+  const day = (session ? sessionDay(session) : undefined) ?? days.find((item) => item.day === dayNumber) ?? days[0];
   return (
     <main className="mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-10">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,.65fr)]">
@@ -29,7 +33,7 @@ export function TodayDashboard({ days, exerciseMap, serverDayNumber, serverDateL
         </div>
 
         <aside className="space-y-4 lg:pt-20">
-          <QuickLink href={`/workout/${day.slug}`} icon={CalendarDays} title="Full day overview" detail="Warm-up, order, targets and notes" />
+          <QuickLink href={day.slug === "custom" ? "/my-training" : `/workout/${day.slug}`} icon={CalendarDays} title="Full day overview" detail="Warm-up, order, targets and notes" />
           <QuickLink href="/exercises" icon={Library} title="Exercise library" detail="112 movements with gym-ready swaps" />
           <QuickLink href="/progression" icon={ArrowRight} title="What should I beat?" detail="Use the double-progression rule" />
           <div className="rounded-3xl border border-border bg-card p-5">

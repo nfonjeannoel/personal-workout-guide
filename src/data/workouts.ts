@@ -1,4 +1,5 @@
 export interface WorkoutExercise {
+  name?: string;
   exerciseSlug: string;
   sets: string;
   reps: string;

@@ -9,10 +9,18 @@ import { emptyTrainingData } from "@/lib/training-data";
 export const runtime = "nodejs";
 
 const loggedSetSchema = z.object({ reps: z.number().int().min(0).max(100).nullable(), rir: z.number().int().min(0).max(10).nullable(), completed: z.boolean() });
-const performanceSchema = z.object({ id: z.string().max(120), performedAt: z.string().max(40), weight: z.string().max(100), sets: z.array(loggedSetSchema).max(20), notes: z.string().max(2_000).optional() });
+const performanceSchema = z.object({ id: z.string().max(300), performedAt: z.string().max(40), weight: z.string().max(100), sets: z.array(loggedSetSchema).max(20), notes: z.string().max(2_000).optional() });
 const exerciseRecordSchema = z.object({ favorite: z.boolean(), notes: z.string().max(5_000), history: z.array(performanceSchema).max(100), updatedAt: z.string().max(40) });
 const journalExerciseLogSchema = z.object({ exerciseSlug: z.string().max(120), weight: z.string().max(100), sets: z.array(loggedSetSchema).max(20), notes: z.string().max(2_000).optional(), updatedAt: z.string().max(40) });
+const planSchema = z.object({
+  day: z.number(), slug: z.string().max(80), label: z.string().max(120), title: z.string().max(120),
+  emphasis: z.string().max(200), type: z.enum(["training", "recovery", "rest"]), estimatedMinutes: z.string().max(80),
+  recovery: z.array(z.string().max(2000)).max(30).optional(),
+  exercises: z.array(z.object({ exerciseSlug: z.string().max(120), name: z.string().max(120).optional(), sets: z.string().max(20), reps: z.string().max(40), rest: z.string().max(40), note: z.string().max(500).optional() })).max(30),
+});
 const workoutSchema = z.object({
+  plan: planSchema.optional(),
+  deletedAt: z.string().max(40).optional(),
   id: z.string().max(160),
   daySlug: z.string().max(80),
   weekKey: z.string().max(20),

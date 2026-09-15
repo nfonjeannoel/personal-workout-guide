@@ -5,6 +5,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useSession } from "@/lib/auth-client";
 import {
   TRAINING_DATA_KEY,
+  rebuildSessionHistory,
   emptyTrainingData,
   mergeTrainingData,
   normalizeTrainingData,
@@ -23,6 +24,7 @@ interface TrainingDataContextValue {
   addPerformance: (slug: string, performance: ExercisePerformance) => void;
   markRecent: (slug: string) => void;
   saveWorkout: (record: WorkoutRecord) => void;
+  deleteWorkout: (id: string) => void;
   recordSwap: (swap: ExerciseSwap) => void;
   replaceData: (data: TrainingData) => void;
 }
@@ -100,11 +102,21 @@ export function TrainingDataProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!hydrated) return;
     try {
-      window.localStorage.setItem(TRAINING_DATA_KEY, JSON.stringify(data));
+      const serialized = JSON.stringify(data);
+      if (window.localStorage.getItem(TRAINING_DATA_KEY) !== serialized) window.localStorage.setItem(TRAINING_DATA_KEY, serialized);
     } catch {
       // In-memory tracking remains available when browser storage is blocked.
     }
   }, [data, hydrated]);
+
+  useEffect(() => {
+    function receiveStorage(event: StorageEvent) {
+      if (event.key !== TRAINING_DATA_KEY || !event.newValue) return;
+      try { setData(normalizeTrainingData(JSON.parse(event.newValue))); } catch { /* Ignore incomplete external writes. */ }
+    }
+    window.addEventListener("storage", receiveStorage);
+    return () => window.removeEventListener("storage", receiveStorage);
+  }, []);
 
   useEffect(() => {
     if (!hydrated || !session?.user) {
@@ -118,8 +130,7 @@ export function TrainingDataProvider({ children }: { children: ReactNode }) {
       .then(async (response) => {
         if (!response.ok) throw new Error("Unable to load account data");
         const result = await response.json() as { data: unknown };
-        const merged = mergeTrainingData(data, normalizeTrainingData(result.data));
-        setData(withTimestamp(merged));
+        setData((current) => withTimestamp(mergeTrainingData(current, normalizeTrainingData(result.data))));
         cloudReady.current = true;
         setSyncState("synced");
       })
@@ -172,7 +183,15 @@ export function TrainingDataProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const saveWorkout = useCallback((record: WorkoutRecord) => {
-    setData((current) => withTimestamp({ ...current, workouts: [record, ...current.workouts.filter((item) => item.id !== record.id)].slice(0, 250) }));
+    setData((current) => {
+      const previous = current.workouts.find((item) => item.id === record.id);
+      if (previous?.deletedAt) return current;
+      return withTimestamp(rebuildSessionHistory({ ...current, workouts: [{ ...previous, ...record }, ...current.workouts.filter((item) => item.id !== record.id)].slice(0, 250) }));
+    });
+  }, []);
+
+  const deleteWorkout = useCallback((id: string) => {
+    setData((current) => withTimestamp(rebuildSessionHistory({ ...current, workouts: current.workouts.map((item) => item.id === id ? { ...item, deletedAt: new Date().toISOString(), updatedAt: new Date().toISOString() } : item) })));
   }, []);
 
   const recordSwap = useCallback((swap: ExerciseSwap) => {
@@ -181,7 +200,7 @@ export function TrainingDataProvider({ children }: { children: ReactNode }) {
 
   const replaceData = useCallback((replacement: TrainingData) => setData(withTimestamp(normalizeTrainingData(replacement))), []);
 
-  const value = useMemo(() => ({ data, hydrated, syncState, updateExercise, addPerformance, markRecent, saveWorkout, recordSwap, replaceData }), [addPerformance, data, hydrated, markRecent, recordSwap, replaceData, saveWorkout, syncState, updateExercise]);
+  const value = useMemo(() => ({ data: { ...data, workouts: data.workouts.filter((item) => !item.deletedAt) }, hydrated, syncState, updateExercise, addPerformance, markRecent, saveWorkout, deleteWorkout, recordSwap, replaceData }), [addPerformance, deleteWorkout, data, hydrated, markRecent, recordSwap, replaceData, saveWorkout, syncState, updateExercise]);
   return <TrainingDataContext.Provider value={value}>{children}</TrainingDataContext.Provider>;
 }
 
