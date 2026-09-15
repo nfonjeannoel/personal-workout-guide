@@ -23,7 +23,7 @@ export function TodayDashboard({ days, exerciseMap, serverDayNumber, serverDateL
         <div>
           <div className="mb-6 flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Today · {day.label}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-ink">Today · {day.label}</p>
               <h1 className="mt-2 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{day.title}</h1>
               <p className="mt-3 text-sm text-muted-foreground">{dateLabel || "Your local training day"} · {day.emphasis}</p>
             </div>
@@ -37,7 +37,7 @@ export function TodayDashboard({ days, exerciseMap, serverDayNumber, serverDateL
           <QuickLink href="/exercises" icon={Library} title="Exercise library" detail="112 movements with gym-ready swaps" />
           <QuickLink href="/progression" icon={ArrowRight} title="What should I beat?" detail="Use the double-progression rule" />
           <div className="rounded-3xl border border-border bg-card p-5">
-            <BookOpen className="size-5 text-primary" />
+            <BookOpen className="size-5 text-primary-ink" />
             <h2 className="mt-4 text-lg font-semibold">The rule for today</h2>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">Keep 1–3 good reps in reserve. Add load only after you reach the top of the rep range across every set with stable technique.</p>
             <Button variant="outline" className="mt-4 h-10 w-full rounded-xl" render={<Link href="/progression" />}>See progression example <ArrowRight className="size-4" /></Button>

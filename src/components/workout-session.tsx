@@ -25,6 +25,6 @@ export function WorkoutSession({ day, exerciseMap, compact = false }: { day: Wor
   return <section>
     {!compact && <h1 className="text-4xl font-semibold">{actualDay.title}</h1>}
     <div className="mt-4 flex flex-wrap items-end justify-between gap-3"><label className="text-sm font-medium">Workout date<input type="date" value={date} onChange={(event) => { if (event.target.value) setDate(event.target.value); }} className="mt-2 block rounded-xl border bg-background p-3" /></label><Button variant="outline" render={<Link href="/my-training" />}>Open journal</Button></div>
-    <SessionTracker key={`${session.id}-${actualDay.slug}`} session={session} day={actualDay} date={date} exercises={new Map(Object.entries(exerciseMap))} allData={data.exercises} swaps={data.swaps} onSaveWorkout={saveWorkout} onAddPerformance={addPerformance} onSwap={recordSwap} onChangeWorkout={() => { router.push("/my-training"); }} />
+    <SessionTracker headingLevel={2} key={`${session.id}-${actualDay.slug}`} session={session} day={actualDay} date={date} exercises={new Map(Object.entries(exerciseMap))} allData={data.exercises} swaps={data.swaps} onSaveWorkout={saveWorkout} onAddPerformance={addPerformance} onSwap={recordSwap} onChangeWorkout={() => { router.push("/my-training"); }} />
   </section>;
 }

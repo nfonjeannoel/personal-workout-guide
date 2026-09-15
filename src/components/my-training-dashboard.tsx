@@ -198,8 +198,8 @@ export function MyTrainingDashboard({ exercises }: { exercises: TrainingExercise
             </div>
           </section>
           <section className="grid grid-cols-2 gap-3">
-            <div className="rounded-2xl border border-border bg-card p-4"><Flame className="size-4 text-primary" /><strong className="mt-3 block text-2xl">{monthSessions.length}</strong><span className="text-xs text-muted-foreground">sessions this month</span></div>
-            <div className="rounded-2xl border border-border bg-card p-4"><CircleCheckBig className="size-4 text-primary" /><strong className="mt-3 block text-2xl">{monthCompleted}</strong><span className="text-xs text-muted-foreground">fully completed</span></div>
+            <div className="rounded-2xl border border-border bg-card p-4"><Flame className="size-4 text-primary-ink" /><strong className="mt-3 block text-2xl">{monthSessions.length}</strong><span className="text-xs text-muted-foreground">sessions this month</span></div>
+            <div className="rounded-2xl border border-border bg-card p-4"><CircleCheckBig className="size-4 text-primary-ink" /><strong className="mt-3 block text-2xl">{monthCompleted}</strong><span className="text-xs text-muted-foreground">fully completed</span></div>
           </section>
         </aside>
 
@@ -252,7 +252,7 @@ function WorkoutChooser({ selectedDate, today, onChoose }: { selectedDate: strin
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         {journalChoices.map((day) => (
           <button key={day.slug} type="button" onClick={() => onChoose(day)} className="group flex min-h-32 items-start gap-4 rounded-2xl border border-border p-4 text-left transition-colors hover:border-primary/50 hover:bg-primary/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-            <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-primary">{day.type === "training" ? <Dumbbell className="size-4" /> : <Sparkles className="size-4" />}</span>
+            <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-primary-ink">{day.type === "training" ? <Dumbbell className="size-4" /> : <Sparkles className="size-4" />}</span>
             <span className="min-w-0 flex-1"><span className="text-xs font-semibold uppercase tracking-[.14em] text-foreground">{day.label}</span><strong className="mt-1 block text-lg">{day.title}</strong><span className="mt-1 block text-sm leading-5 text-muted-foreground">{day.emphasis} · {day.estimatedMinutes}</span></span>
             <ArrowRight className="mt-1 size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </button>
@@ -262,7 +262,8 @@ function WorkoutChooser({ selectedDate, today, onChoose }: { selectedDate: strin
   );
 }
 
-export function SessionTracker({ session, day, date, exercises, allData, swaps, onSaveWorkout, onSwap, onChangeWorkout }: {
+export function SessionTracker({ headingLevel = 3, session, day, date, exercises, allData, swaps, onSaveWorkout, onSwap, onChangeWorkout }: {
+  headingLevel?: 2 | 3;
   session: WorkoutRecord;
   day: WorkoutDay;
   date: string;
@@ -275,6 +276,8 @@ export function SessionTracker({ session, day, date, exercises, allData, swaps, 
   onChangeWorkout: () => void;
 }) {
   const { deleteWorkout } = useTrainingData();
+  const Heading = headingLevel === 2 ? "h2" : "h3";
+  const ReflectionHeading = headingLevel === 2 ? "h3" : "h4";
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(day.title);
   const [editedDate, setEditedDate] = useState(date);
@@ -332,8 +335,8 @@ export function SessionTracker({ session, day, date, exercises, allData, swaps, 
       {editing && <div className="mb-4 space-y-3 rounded-xl border p-4"><label className="block">Session name<Input value={title} onChange={(event) => setTitle(event.target.value)} maxLength={120} /></label><label className="block">Session date<Input type="date" value={editedDate} onChange={(event) => setEditedDate(event.target.value)} /></label><Button disabled={!title.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(editedDate)} onClick={() => { persist({ plan: { ...day, title: title.trim() }, date: editedDate, weekKey: mondayKey(editedDate) }); setEditing(false); }}>Save session changes</Button></div>}
       {suggestions && <div className="mb-4 rounded-xl border p-4"><p className="text-sm">Suggestions favor alternatives you have used least recently. Logged exercises stay in place.</p><ul className="my-3 space-y-2">{Object.entries(suggestions).map(([from, to]) => <li key={from}>{exercises.get(from)?.name} → {exercises.get(to)?.name}</li>)}</ul>{Object.keys(suggestions).length ? <Button onClick={() => { const logs = { ...session.exerciseLogs }; for (const from of Object.keys(suggestions)) delete logs[from]; persist({ exerciseLogs: logs }); for (const [from, to] of Object.entries(suggestions)) onSwap({ id: `${session.id}-${from}`, originalSlug: from, replacementSlug: to, daySlug: day.slug, swappedAt: new Date().toISOString() }); setSuggestions(null); }}>Apply suggested alternatives</Button> : <p>No unused alternatives are available for the remaining exercises.</p>}<Button variant="ghost" onClick={() => setSuggestions(null)}>Close suggestions</Button></div>}
       <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
-        <div><p className="text-xs uppercase tracking-[.14em] text-muted-foreground">{day.emphasis}</p><h3 className="mt-1 text-2xl font-semibold">{day.title}</h3><div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"><span>{day.estimatedMinutes}</span><span>{session.completedExercises.length}/{total} complete</span>{session.completedExercises.length === 0 && Object.keys(session.exerciseLogs ?? {}).length === 0 && <button type="button" onClick={onChangeWorkout} className="text-xs font-medium text-primary hover:underline">Change workout</button>}</div></div>
-        <div className="min-w-32 rounded-2xl bg-secondary p-4 text-center"><strong className="font-mono text-2xl text-primary">{percent}%</strong><span className="mt-1 block text-[11px] uppercase tracking-wider text-muted-foreground">session progress</span></div>
+        <div><p className="text-xs uppercase tracking-[.14em] text-muted-foreground">{day.emphasis}</p><Heading className="mt-1 text-2xl font-semibold">{day.title}</Heading><div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"><span>{day.estimatedMinutes}</span><span>{session.completedExercises.length}/{total} complete</span>{session.completedExercises.length === 0 && Object.keys(session.exerciseLogs ?? {}).length === 0 && <button type="button" onClick={onChangeWorkout} className="text-xs font-medium text-primary-ink hover:underline">Change workout</button>}</div></div>
+        <div className="min-w-32 rounded-2xl bg-secondary p-4 text-center"><strong className="font-mono text-2xl text-primary-ink">{percent}%</strong><span className="mt-1 block text-[11px] uppercase tracking-wider text-muted-foreground">session progress</span></div>
       </div>
       <Progress className="mt-5" value={percent} aria-label={`${percent}% of session complete`} />
       <div className="mt-5"><RestTimer defaultSeconds={120} compact /></div>
@@ -379,7 +382,7 @@ export function SessionTracker({ session, day, date, exercises, allData, swaps, 
         persist({ plan: { ...day, exercises: [...day.exercises, { exerciseSlug: known?.slug ?? `custom-${crypto.randomUUID()}`, name: known?.name ?? newExercise.trim(), sets: "3", reps: known?.repRange ?? "As performed", rest: "As needed" }] }, completedAt: undefined }); setNewExercise("");
       }}><Plus /> Add exercise</Button></div>}
       <section className="mt-8 rounded-2xl border border-border bg-background/45 p-4 sm:p-5" aria-labelledby="reflection-heading">
-        <div className="flex items-center gap-3"><NotebookPen className="size-4 text-primary" /><h4 id="reflection-heading" className="font-semibold">Session reflection</h4></div>
+        <div className="flex items-center gap-3"><NotebookPen className="size-4 text-primary-ink" /><ReflectionHeading id="reflection-heading" className="font-semibold">Session reflection</ReflectionHeading></div>
         <p className="mt-4 text-xs font-medium uppercase tracking-wider text-muted-foreground">How did it feel?</p>
         <div className="mt-2 grid grid-cols-3 gap-2">
           {([['rough', 'Tough'], ['steady', 'Solid'], ['strong', 'Strong']] as const).map(([value, label]) => <button key={value} type="button" aria-pressed={session.feeling === value} onClick={() => persist({ feeling: value })} className={`min-h-10 rounded-xl border px-2 text-sm font-medium ${session.feeling === value ? "border-primary bg-primary text-primary-foreground" : "border-border hover:bg-muted"}`}>{label}</button>)}
@@ -433,10 +436,10 @@ function JournalExerciseCard({ onRemove, sessionId, item, original, exercise, op
       <div className="flex items-start gap-3 p-4 sm:p-5">
         <Checkbox checked={done} onCheckedChange={onToggle} aria-label={`Mark ${exercise.name} complete`} className="mt-1 size-6 rounded-lg" />
         <div className="min-w-0 flex-1">
-          {exercise.slug !== original.slug && <p className="mb-1 text-xs text-primary">Swapped from {original.name}</p>}
+          {exercise.slug !== original.slug && <p className="mb-1 text-xs text-primary-ink">Swapped from {original.name}</p>}
           <span className={`font-semibold ${done ? "text-muted-foreground line-through" : ""}`}>{exercise.name}</span>
           <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground"><span className="flex items-center gap-1"><Repeat2 className="size-3" />{item.sets} × {item.reps}</span><span className="flex items-center gap-1"><Clock3 className="size-3" />{item.rest}</span></div>
-          <p className="mt-2 flex items-start gap-1.5 text-xs leading-5 text-primary"><Target className="mt-0.5 size-3 shrink-0" />{target}</p>
+          <p className="mt-2 flex items-start gap-1.5 text-xs leading-5 text-primary-ink"><Target className="mt-0.5 size-3 shrink-0" />{target}</p>
           {item.note && <p className="mt-2 text-xs leading-5 text-muted-foreground">{item.note}</p>}
           <div className="mt-3 flex flex-wrap gap-2">
             {onRemove && <Button variant="outline" size="sm" onClick={onRemove}>Remove exercise</Button>}
@@ -474,8 +477,8 @@ function JournalTimeline({ sessions, onSelect }: { sessions: WorkoutRecord[]; on
   const recent = [...sessions].sort((a, b) => workoutDate(b).localeCompare(workoutDate(a)) || Date.parse(b.updatedAt) - Date.parse(a.updatedAt)).slice(0, 10);
   return (
     <section aria-labelledby="journal-history-heading">
-      <div className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-secondary text-primary"><History className="size-4" /></span><div><p className="text-xs uppercase tracking-[.14em] text-muted-foreground">Log book</p><h2 id="journal-history-heading" className="text-2xl font-semibold">Recent sessions</h2></div></div>
-      {recent.length ? <ol className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{recent.map((session) => { const day = sessionDay(session); const date = workoutDate(session); const total = day ? totalItems(day) : 0; const status = sessionStatus(session, total); return <li key={session.id}><button type="button" onClick={() => onSelect(date, session.id)} className="flex min-h-28 w-full items-start gap-4 rounded-2xl border border-border bg-card p-4 text-left hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span className={`grid size-10 shrink-0 place-items-center rounded-xl ${status === "complete" ? "bg-primary text-primary-foreground" : "bg-secondary text-primary"}`}>{status === "complete" ? <CircleCheckBig className="size-4" /> : <CalendarCheck className="size-4" />}</span><span className="min-w-0 flex-1"><strong className="block">{day?.title ?? "Workout"}</strong><time dateTime={date} className="mt-1 block text-xs text-muted-foreground">{new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(dateFromKey(date))}</time><span className="mt-2 block font-mono text-xs text-primary">{session.completedExercises.length}/{total} complete</span></span><ArrowRight className="mt-1 size-4 text-muted-foreground" /></button></li>; })}</ol> : <div className="mt-5 rounded-2xl border border-dashed border-border p-6 text-sm leading-6 text-muted-foreground">Choose a date and workout above. Every session will become a dated logbook entry here.</div>}
+      <div className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-secondary text-primary-ink"><History className="size-4" /></span><div><p className="text-xs uppercase tracking-[.14em] text-muted-foreground">Log book</p><h2 id="journal-history-heading" className="text-2xl font-semibold">Recent sessions</h2></div></div>
+      {recent.length ? <ol className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{recent.map((session) => { const day = sessionDay(session); const date = workoutDate(session); const total = day ? totalItems(day) : 0; const status = sessionStatus(session, total); return <li key={session.id}><button type="button" onClick={() => onSelect(date, session.id)} className="flex min-h-28 w-full items-start gap-4 rounded-2xl border border-border bg-card p-4 text-left hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><span className={`grid size-10 shrink-0 place-items-center rounded-xl ${status === "complete" ? "bg-primary text-primary-foreground" : "bg-secondary text-primary-ink"}`}>{status === "complete" ? <CircleCheckBig className="size-4" /> : <CalendarCheck className="size-4" />}</span><span className="min-w-0 flex-1"><strong className="block">{day?.title ?? "Workout"}</strong><time dateTime={date} className="mt-1 block text-xs text-muted-foreground">{new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(dateFromKey(date))}</time><span className="mt-2 block font-mono text-xs text-primary-ink">{session.completedExercises.length}/{total} complete</span></span><ArrowRight className="mt-1 size-4 text-muted-foreground" /></button></li>; })}</ol> : <div className="mt-5 rounded-2xl border border-dashed border-border p-6 text-sm leading-6 text-muted-foreground">Choose a date and workout above. Every session will become a dated logbook entry here.</div>}
     </section>
   );
 }
@@ -494,7 +497,7 @@ function RecentPerformance({ exercises }: { exercises: TrainingExercise[] }) {
   return (
     <section aria-labelledby="recent-lifts-heading">
       <div className="flex items-center gap-3">
-        <span className="grid size-10 place-items-center rounded-xl bg-secondary text-primary"><Dumbbell className="size-4" /></span>
+        <span className="grid size-10 place-items-center rounded-xl bg-secondary text-primary-ink"><Dumbbell className="size-4" /></span>
         <div><p className="text-xs uppercase tracking-[.14em] text-muted-foreground">Exercise history</p><h2 id="recent-lifts-heading" className="text-2xl font-semibold">Recent lifts</h2></div>
       </div>
       <ol className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -505,7 +508,7 @@ function RecentPerformance({ exercises }: { exercises: TrainingExercise[] }) {
             <li key={`${slug}-${performance.id}`}>
               <Link href={slug.startsWith("custom-") ? "/my-training" : `/exercises/${slug}`} className="group block min-h-32 rounded-2xl border border-border bg-card p-4 hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 <strong className="block truncate">{exercise?.name ?? customNames.get(slug) ?? slug}</strong>
-                <p className="mt-2 font-mono text-sm text-primary">{performance.weight || "Bodyweight"} · {reps || "—"} reps</p>
+                <p className="mt-2 font-mono text-sm text-primary-ink">{performance.weight || "Bodyweight"} · {reps || "—"} reps</p>
                 <time dateTime={performance.performedAt} className="mt-3 block text-xs text-muted-foreground">{new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(new Date(performance.performedAt))}</time>
                 <span className="mt-3 flex items-center gap-1 text-xs font-medium text-muted-foreground group-hover:text-foreground">Open exercise <ArrowRight className="size-3" /></span>
               </Link>
@@ -526,5 +529,5 @@ function PersonalShelf({ exercises }: { exercises: TrainingExercise[] }) {
 }
 
 function ExerciseRow({ title, icon: Icon, items, empty }: { title: string; icon: typeof Heart; items: TrainingExercise[]; empty: string }) {
-  return <section aria-labelledby={`${title.toLowerCase().replaceAll(" ", "-")}-heading`}><div className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-secondary text-primary"><Icon className="size-4" /></span><h2 id={`${title.toLowerCase().replaceAll(" ", "-")}-heading`} className="text-2xl font-semibold">{title}</h2></div>{items.length ? <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">{items.slice(0, 6).map((item) => <Link key={item.slug} href={`/exercises/${item.slug}`} className="group flex min-h-24 items-center gap-3 overflow-hidden rounded-2xl border border-border bg-card pr-4 hover:border-primary/40"><span className="relative h-24 w-24 shrink-0 bg-muted"><Image src={item.image} alt="" fill sizes="96px" className="object-cover" /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{item.name}</strong><span className="mt-1 block text-xs text-muted-foreground">{item.muscleGroup}</span></span><ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" /></Link>)}</div> : <div className="mt-5 rounded-2xl border border-dashed border-border p-6 text-sm leading-6 text-muted-foreground">{empty}</div>}</section>;
+  return <section aria-labelledby={`${title.toLowerCase().replaceAll(" ", "-")}-heading`}><div className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-secondary text-primary-ink"><Icon className="size-4" /></span><h2 id={`${title.toLowerCase().replaceAll(" ", "-")}-heading`} className="text-2xl font-semibold">{title}</h2></div>{items.length ? <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">{items.slice(0, 6).map((item) => <Link key={item.slug} href={`/exercises/${item.slug}`} className="group flex min-h-24 items-center gap-3 overflow-hidden rounded-2xl border border-border bg-card pr-4 hover:border-primary/40"><span className="relative h-24 w-24 shrink-0 bg-muted"><Image src={item.image} alt="" fill sizes="96px" className="object-cover" /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{item.name}</strong><span className="mt-1 block text-xs text-muted-foreground">{item.muscleGroup}</span></span><ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" /></Link>)}</div> : <div className="mt-5 rounded-2xl border border-dashed border-border p-6 text-sm leading-6 text-muted-foreground">{empty}</div>}</section>;
 }

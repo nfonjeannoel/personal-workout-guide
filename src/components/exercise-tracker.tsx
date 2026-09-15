@@ -65,11 +65,11 @@ export function ExerciseTracker({ slug, name, recommendedSets, repRange }: { slu
   return (
     <section className="rounded-3xl border border-border bg-card p-5 sm:p-6" aria-labelledby="personal-log-heading">
       <div className="flex items-start justify-between gap-4">
-        <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Personal training log</p><h2 id="personal-log-heading" className="mt-2 text-xl font-semibold">Log {name}</h2></div>
-        <Button type="button" variant={record?.favorite ? "secondary" : "outline"} size="icon" className="size-11 rounded-xl" onClick={() => updateExercise(slug, { favorite: !record?.favorite })} aria-label={record?.favorite ? `Remove ${name} from favorites` : `Add ${name} to favorites`}><Heart className={`size-4 ${record?.favorite ? "fill-current text-primary" : ""}`} /></Button>
+        <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-ink">Personal training log</p><h2 id="personal-log-heading" className="mt-2 text-xl font-semibold">Log {name}</h2></div>
+        <Button type="button" variant={record?.favorite ? "secondary" : "outline"} size="icon" className="size-11 rounded-xl" onClick={() => updateExercise(slug, { favorite: !record?.favorite })} aria-label={record?.favorite ? `Remove ${name} from favorites` : `Add ${name} to favorites`}><Heart className={`size-4 ${record?.favorite ? "fill-current text-primary-ink" : ""}`} /></Button>
       </div>
 
-      <div className="mt-5 rounded-2xl bg-secondary/65 p-4"><p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary"><Target className="size-3.5" /> Next target</p><p className="mt-2 text-sm leading-6">{target}</p></div>
+      <div className="mt-5 rounded-2xl bg-secondary/65 p-4"><p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary-ink"><Target className="size-3.5" /> Next target</p><p className="mt-2 text-sm leading-6">{target}</p></div>
 
       <label className="mt-5 block text-sm font-medium">Weight or resistance<Input value={weight} onChange={(event) => setWeight(event.target.value)} maxLength={100} placeholder="e.g. 50 kg or pin 8" className="mt-2 h-11 rounded-xl" /></label>
 
@@ -93,7 +93,7 @@ export function ExerciseTracker({ slug, name, recommendedSets, repRange }: { slu
 
       {record?.history.length ? (
         <div className="mt-4 border-t border-border pt-4">
-          <button type="button" className="flex min-h-10 w-full items-center justify-between rounded-lg text-sm font-medium" onClick={() => setShowHistory((value) => !value)} aria-expanded={showHistory}><span className="flex items-center gap-2"><History className="size-4 text-primary" /> History ({record.history.length})</span>{showHistory ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}</button>
+          <button type="button" className="flex min-h-10 w-full items-center justify-between rounded-lg text-sm font-medium" onClick={() => setShowHistory((value) => !value)} aria-expanded={showHistory}><span className="flex items-center gap-2"><History className="size-4 text-primary-ink" /> History ({record.history.length})</span>{showHistory ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}</button>
           {showHistory && <ol className="mt-2 space-y-2">{record.history.slice(0, 8).map((session) => <li key={session.id} className="rounded-xl bg-secondary/55 p-3 text-sm"><div className="flex items-center justify-between gap-3"><time className="text-muted-foreground" dateTime={session.performedAt}>{new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(new Date(session.performedAt))}</time><strong>{session.weight || "Bodyweight"}</strong></div><p className="mt-1 font-mono text-xs text-muted-foreground">{session.sets.filter((set) => set.completed).map((set) => `${set.reps ?? "–"}${set.rir !== null ? ` @ ${set.rir} RIR` : ""}`).join(" · ")}</p></li>)}</ol>}
         </div>
       ) : null}
